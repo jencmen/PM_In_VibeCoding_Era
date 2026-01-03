@@ -20,7 +20,9 @@ import {
   Terminal,
   ShieldCheck,
   ArrowRightLeft,
-  Handshake
+  Handshake,
+  User,
+  MessageSquare
 } from 'lucide-react';
 import { 
   BarChart as ReBarChart, 
@@ -193,6 +195,44 @@ const Discussion = () => (
     <AcademicCard title="4. דיון: תובנות מהשטח וחוויה אישית" icon={Lightbulb}>
       <div className="prose prose-indigo max-w-none text-slate-600 text-lg space-y-12">
         
+        {/* New Personal Experience Sub-chapter */}
+        <section className="bg-indigo-50/50 p-10 rounded-[2.5rem] border border-indigo-100 relative overflow-hidden">
+          <div className="absolute top-4 left-4 opacity-10">
+            <User size={120} className="text-indigo-600" />
+          </div>
+          <div className="relative z-10">
+            <h4 className="text-2xl font-black text-indigo-900 mb-6 flex items-center gap-3">
+              <div className="bg-indigo-600 p-2.5 rounded-xl text-white shadow-lg">
+                <User size={24} />
+              </div>
+              תת-פרק: חוויה אישית - מהספקן למאמין
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <p className="text-slate-700 leading-relaxed font-medium mb-4">
+                  בתחילת הדרך, ראיתי ב-AI כלי עזר לכתיבת מיילים או לניסוח דרישות בלבד. המפגש הראשון עם כלים כמו <span className="font-bold text-indigo-700">Cursor</span> ו-<span className="font-bold text-indigo-700">Lovable</span> שינה את תפיסת עולמי המקצועית.
+                </p>
+                <div className="flex gap-3 mb-4">
+                  <div className="bg-white p-4 rounded-2xl shadow-sm border border-indigo-100 flex-1">
+                    <MessageSquare size={16} className="text-indigo-400 mb-2" />
+                    <div className="text-xs text-slate-500 italic">"פתאום היכולת שלי להוציא MVP לא הייתה תלויה בתעדוף של צוות הפיתוח, אלא במהירות המחשבה שלי."</div>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <p className="text-slate-700 leading-relaxed">
+                  המעבר מ"לכתוב על המוצר" ל"לבנות את המוצר" הוא משכר ומפחיד כאחד. הוא מחייב אותנו, מנהלי המוצר, לפתח אחריות חדשה על איכות הקוד שאנחנו "מייצרים" במחי יד.
+                </p>
+                <ul className="text-sm space-y-2 text-indigo-800 font-bold">
+                  <li className="flex items-center gap-2"><CheckCircle2 size={14}/> משבועיים לשעתיים: קיצור דרמטי ב-Feedback Loop</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 size={14}/> תחושת ה-"First Deploy": חוויה ששמורה הייתה רק למפתחים</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 size={14}/> ההבנה שאין יותר "זה לא אפשרי טכנית"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* WOW Effect Section */}
         <section className="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-200 relative overflow-hidden group">
           <div className="absolute top-0 left-0 w-32 h-32 bg-indigo-100/50 rounded-full -translate-x-16 -translate-y-16 group-hover:scale-110 transition-transform"></div>
