@@ -22,7 +22,8 @@ import {
   ArrowRightLeft,
   Handshake,
   User,
-  MessageSquare
+  MessageSquare,
+  Trophy
 } from 'lucide-react';
 import { 
   BarChart as ReBarChart, 
@@ -42,6 +43,46 @@ const researchResults = [
   { method: 'B', stability: 4.8, speed: 4, label: 'PRD מלא' },
   { method: 'C', stability: 2.0, speed: 5, label: 'Vibe Only' },
   { method: 'D', stability: 4.5, speed: 4.2, label: 'איטרטיבי' },
+];
+
+const methodologyData = [
+  {
+    id: 'A',
+    title: 'The Documenter',
+    label: 'דרישות בלבד',
+    description: 'הגדרת ה"מה" ללא ה"איך". המודל ממלא את הפערים בעצמו.',
+    color: 'bg-white',
+    textColor: 'text-slate-900',
+    subColor: 'text-slate-500'
+  },
+  {
+    id: 'B',
+    title: 'The Architect',
+    label: 'PRD מלא + מסכים',
+    description: 'הגדרה מדויקת הכוללת פתרון טכני ועיצוב מסכים.',
+    color: 'bg-white',
+    textColor: 'text-slate-900',
+    subColor: 'text-slate-500'
+  },
+  {
+    id: 'C',
+    title: 'The Vibe Coder',
+    label: 'פרומפט כללי',
+    description: 'תיאור חופשי של הרעיון (Vibe Only) ללא מסמכים.',
+    color: 'bg-white',
+    textColor: 'text-slate-900',
+    subColor: 'text-slate-500'
+  },
+  {
+    id: 'D',
+    title: 'The Iterative',
+    label: 'טעינה הדרגתית',
+    description: 'בניית הליבה תחילה ושיפור איטרטיבי (Winner).',
+    color: 'bg-indigo-600',
+    textColor: 'text-white',
+    subColor: 'text-indigo-100',
+    isWinner: true
+  }
 ];
 
 const toolsLandscape = [
@@ -146,12 +187,29 @@ const Methodology = () => (
   <div className="space-y-8">
     <AcademicCard title="2. מתודולוגיה" icon={Settings}>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {['A', 'B', 'C', 'D'].map(id => (
-          <div key={id} className={`p-6 rounded-3xl border border-slate-200 shadow-sm relative overflow-hidden ${id === 'D' ? 'bg-indigo-600 text-white shadow-indigo-100' : 'bg-white'}`}>
-             <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 font-black ${id === 'D' ? 'bg-white text-indigo-600' : 'bg-slate-100'}`}>{id}</div>
-             <div className="font-bold mb-1">Method {id}</div>
-             <p className={`text-xs ${id === 'D' ? 'text-indigo-100' : 'text-slate-500'}`}>ניתוח השפעת איכות הקלט על איכות התוצר הסופי.</p>
-             {id === 'D' && <Award size={16} className="absolute top-6 left-6 text-white" />}
+        {methodologyData.map(method => (
+          <div key={method.id} className={`p-6 rounded-3xl border border-slate-200 shadow-sm relative overflow-hidden flex flex-col min-h-[180px] transition-transform hover:scale-[1.02] ${method.color} ${method.textColor}`}>
+             <div className="flex justify-between items-start mb-4">
+               <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black ${method.isWinner ? 'bg-white text-indigo-600' : 'bg-slate-100 text-slate-600'}`}>
+                 {method.id}
+               </div>
+               {method.isWinner && (
+                 <div className="bg-indigo-500 text-white text-[10px] font-black px-3 py-1 rounded-full flex items-center gap-1 animate-pulse">
+                   <Trophy size={10} /> WINNER
+                 </div>
+               )}
+             </div>
+             
+             <div className="mb-2">
+               <div className="text-xs opacity-70 font-bold mb-0.5">{method.title}</div>
+               <div className="font-black text-lg leading-tight">{method.label}</div>
+             </div>
+             
+             <p className={`text-sm mt-auto ${method.subColor}`}>
+               {method.description}
+             </p>
+             
+             {method.isWinner && <Award size={16} className="absolute top-6 left-6 text-white opacity-20" />}
           </div>
         ))}
       </div>
