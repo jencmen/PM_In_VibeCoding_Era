@@ -44,7 +44,7 @@ const researchResults = [
 const toolsLandscape = [
   // Top-Left (High Ability / Less Technical)
   { name: 'Base 44', x: 28, y: 78, color: 'bg-orange-500', highlighted: true },
-  { name: 'Google AI Studio', x: 22, y: 68, color: 'bg-slate-900', highlighted: true },
+  { name: 'Google AI Studio', x: 24, y: 68, color: 'bg-slate-900', highlighted: true },
   { name: 'emergent', x: 45, y: 88, color: 'bg-slate-800 text-white' },
   { name: 'Mocha', x: 35, y: 75, color: 'bg-white text-slate-800 border border-slate-200' },
   { name: 'Dyad', x: 38, y: 70, color: 'bg-white text-purple-600 border border-slate-100' },
@@ -67,18 +67,32 @@ const toolsLandscape = [
 // --- Sub-components ---
 
 const ToolQuadrant = () => (
-  <div className="relative w-full aspect-square md:aspect-video bg-[#fdfdfd] border border-slate-100 rounded-3xl overflow-visible mt-16 mb-16 shadow-sm mx-auto max-w-4xl">
+  <div className="relative w-full aspect-[4/3] bg-white border border-slate-200 rounded-xl overflow-visible mt-20 mb-20 shadow-sm mx-auto max-w-2xl ring-1 ring-slate-100">
     {/* Solid Axis Lines */}
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="w-[1px] h-[100%] bg-slate-900 absolute opacity-80"></div>
-      <div className="h-[1px] w-[100%] bg-slate-900 absolute opacity-80"></div>
+      <div className="w-[1px] h-[105%] bg-slate-900 absolute opacity-100"></div>
+      <div className="h-[1px] w-[105%] bg-slate-900 absolute opacity-100"></div>
     </div>
 
-    {/* Axis End Labels - Positioned exactly as in the image */}
-    <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-black text-slate-900 text-lg md:text-xl whitespace-nowrap">High Ability/Power</div>
-    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 font-black text-slate-900 text-lg md:text-xl whitespace-nowrap">Lower Ability/Power</div>
-    <div className="absolute top-1/2 -left-4 md:-left-8 -translate-x-full -translate-y-1/2 font-black text-slate-900 text-lg md:text-xl whitespace-nowrap">Less technical</div>
-    <div className="absolute top-1/2 -right-4 md:-right-8 translate-x-full -translate-y-1/2 font-black text-slate-900 text-lg md:text-xl whitespace-nowrap">More technical</div>
+    {/* Labels at the end of axes - Styled for maximum clarity */}
+    <div className="absolute -top-12 left-1/2 -translate-x-1/2 font-black text-slate-900 text-base md:text-xl text-center whitespace-nowrap bg-slate-50 px-3 py-1 rounded-lg">
+      High Ability/Power
+    </div>
+    <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 font-black text-slate-900 text-base md:text-xl text-center whitespace-nowrap bg-slate-50 px-3 py-1 rounded-lg">
+      Lower Ability/Power
+    </div>
+    <div className="absolute top-1/2 -left-4 md:-left-8 -translate-x-full -translate-y-1/2 font-black text-slate-900 text-base md:text-xl text-center whitespace-nowrap bg-slate-50 px-3 py-1 rounded-lg">
+      Less technical
+    </div>
+    <div className="absolute top-1/2 -right-4 md:-right-8 translate-x-full -translate-y-1/2 font-black text-slate-900 text-base md:text-xl text-center whitespace-nowrap bg-slate-50 px-3 py-1 rounded-lg">
+      More technical
+    </div>
+
+    {/* Optional: Arrow tips for the axes */}
+    <div className="absolute -top-[3%] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-b-[10px] border-transparent border-b-slate-900"></div>
+    <div className="absolute top-[103%] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[10px] border-transparent border-t-slate-900"></div>
+    <div className="absolute top-1/2 -left-[3%] -translate-y-1/2 w-0 h-0 border-t-[6px] border-b-[6px] border-r-[10px] border-transparent border-r-slate-900"></div>
+    <div className="absolute top-1/2 [left:103%] -translate-y-1/2 w-0 h-0 border-t-[6px] border-b-[6px] border-l-[10px] border-transparent border-l-slate-900"></div>
 
     {/* Tools */}
     {toolsLandscape.map((tool, idx) => (
@@ -86,15 +100,15 @@ const ToolQuadrant = () => (
         key={idx}
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: idx * 0.03 }}
-        className={`absolute px-2.5 py-1.5 rounded shadow-sm text-[10px] md:text-xs font-black flex items-center gap-1.5 cursor-default hover:scale-110 transition-transform ${tool.color} ${tool.highlighted ? 'ring-2 ring-yellow-400 ring-offset-2 z-20 scale-110' : 'z-10'}`}
+        transition={{ delay: idx * 0.02 }}
+        className={`absolute px-2.5 py-1.5 rounded shadow-md text-[10px] md:text-xs font-black flex items-center gap-1.5 cursor-default hover:scale-110 transition-transform ${tool.color} ${tool.highlighted ? 'ring-2 ring-yellow-400 ring-offset-2 z-20 scale-110' : 'z-10'}`}
         style={{ 
           left: `${tool.x}%`, 
           bottom: `${tool.y}%`,
           transform: 'translate(-50%, 50%)'
         }}
       >
-        {tool.highlighted && <Zap size={12} className="text-yellow-400 fill-current" />}
+        {tool.highlighted && <Zap size={14} className="text-yellow-400 fill-current" />}
         {tool.name}
       </motion.div>
     ))}
@@ -217,13 +231,13 @@ const Methodology = () => (
 
     <AcademicCard title="2.1 בחירת כלי: מפת ה-Vibe Coding" icon={Wrench}>
       <p className="text-lg text-slate-600 mb-8">
-        מיפוי האקו-סיסטם הנוכחי של כלי ה-AI לפיתוח. המפה מציגה את הצירים המרכזיים המשפיעים על בחירת הכלי: רמת המומחיות הטכנית הנדרשת מול עוצמת היכולת והיציבות שהכלי מספק.
+        מפת הכלים המחקרית ממקמת את פתרונות ה-AI לפי הצירים המרכזיים שזוהו: רמת המומחיות הטכנית הנדרשת מול עוצמת היכולת והיציבות שהכלי מספק.
       </p>
       
-      <div className="px-12 md:px-24 py-12 bg-slate-50/50 border border-slate-100 rounded-[3rem]">
+      <div className="px-4 py-8 bg-slate-50/50 border border-slate-100 rounded-[3rem]">
         <ToolQuadrant />
         
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 ring-2 ring-orange-100 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-orange-500/5 blur-3xl rounded-full"></div>
             <div className="flex items-center gap-3 mb-4">
@@ -233,7 +247,7 @@ const Methodology = () => (
               <h5 className="font-black text-2xl text-slate-900">Base 44</h5>
             </div>
             <p className="text-slate-600 leading-relaxed font-medium">
-              נבחר ככלי ה-High Ability המרכזי. הוא מאפשר ל-PM לעבור משלב הפרומפט לשלב האפליקציה העובדת (MVP) תוך שמירה על שליטה גבוהה בארכיטקטורה.
+              נבחר ככלי ה-High Ability המרכזי במחקר. הוא מאפשר ל-PM לעבור משלב הפרומפט לשלב האפליקציה העובדת (MVP) תוך שמירה על שליטה גבוהה במבנה הנתונים והלוגיקה.
             </p>
           </div>
           <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 ring-2 ring-slate-100 relative overflow-hidden">
@@ -245,7 +259,7 @@ const Methodology = () => (
               <h5 className="font-black text-2xl text-slate-900">Google AI Studio</h5>
             </div>
             <p className="text-slate-600 leading-relaxed font-medium">
-              המעבדה המרכזית לבחינת לוגיקות. הכלי מספק את הגישה הישירה והמהירה ביותר ליכולות הליבה של Gemini, ומאפשר זיקוק של ה-Core Value לפני בניית ה-UI.
+              המעבדה לבחינת מודלים ופרומפטינג מתקדם. הכלי סיפק את הגישה הישירה ליכולות Gemini, ואיפשר זיקוק מהיר של דרישות מורכבות לפני הטמעתן בפתרונות בניה.
             </p>
           </div>
         </div>
@@ -427,7 +441,7 @@ const App: React.FC = () => {
           <footer className="mt-20 pt-8 border-t border-slate-200 flex justify-between items-center text-slate-400 text-xs font-bold">
             <div className="flex items-center gap-4">
               <span className="font-mono bg-slate-100 px-2 py-1 rounded">Page 0{navigation.findIndex(t => t.id === activeTab) + 1}</span>
-              <span className="hidden md:inline italic opacity-50">Draft v1.5 // March 2025</span>
+              <span className="hidden md:inline italic opacity-50">Draft v1.6 // March 2025</span>
             </div>
             <div className="flex gap-4">
               <button className="p-2 hover:bg-slate-100 rounded-full transition-colors" title="ערוך"><Edit3 size={16} /></button>
