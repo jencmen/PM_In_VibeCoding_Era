@@ -22,7 +22,12 @@ import {
   Layout,
   Layers,
   Sparkles,
-  MousePointer2
+  MousePointer2,
+  Repeat,
+  Server,
+  ShieldCheck,
+  ArrowRightLeft,
+  Handshake
 } from 'lucide-react';
 import { 
   BarChart as ReBarChart, 
@@ -366,17 +371,61 @@ const Results = () => (
 
 const Discussion = () => (
   <div className="space-y-8">
-    <AcademicCard title="4. דיון: המעבר מ-Manager ל-Builder" icon={Lightbulb}>
-      <div className="prose prose-indigo max-w-none text-slate-600 text-lg space-y-6">
-        <p>
-          המחקר מוכיח כי ה-PM כבר אינו רק "מנהל" אלא "בונה". היכולת להוציא תוצר עובד (MVP) ללא תלות בצוות פיתוח בשלבים המוקדמים משנה את יחסי הכוחות בארגון.
-        </p>
-        <div className="bg-slate-900 text-white p-8 rounded-3xl">
+    <AcademicCard title="4. דיון: תובנות מהשטח וחוויה אישית" icon={Lightbulb}>
+      <div className="prose prose-indigo max-w-none text-slate-600 text-lg space-y-12">
+        
+        {/* WOW Effect Section */}
+        <section className="bg-slate-50 p-8 rounded-[2rem] border border-slate-200 relative overflow-hidden">
+          <Sparkles className="absolute -top-4 -left-4 text-indigo-100" size={120} />
+          <div className="relative z-10">
+            <h4 className="text-2xl font-black text-slate-800 mb-4 flex items-center gap-3">
+              <div className="bg-indigo-600 p-2 rounded-lg text-white shadow-md">
+                <Sparkles size={20} />
+              </div>
+              אפקט ה-WOW והתועלת השולית הפוחתת
+            </h4>
+            <p className="text-slate-600 leading-relaxed font-medium">
+              החוויה האישית שלי בבנייה ב-Vibe Coding מתחילה תמיד באפקט "WOW" מסחרר באיטרציה הראשונה. תוך דקות, רעיון מופשט הופך למשהו שאפשר להקליק עליו. 
+              אבל, ככל שצוללים לפרטים הקטנים, ל-Edge Cases ולפיצ'רים המורכבים - התועלת השולית של ה-Vibe פוחתת. האינטראקציה הופכת מ"קסם" לעבודת נמלים של דיוק, שם נדרשת המתודולוגיה האיטרטיבית (שיטה D) כדי לא ללכת לאיבוד.
+            </p>
+          </div>
+        </section>
+
+        {/* Practical Challenges Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <div className="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+            <Handshake className="text-indigo-500 mb-4" size={32} />
+            <h5 className="font-black text-slate-800 mb-2">מסירת המערכת (Handoff)</h5>
+            <p className="text-sm text-slate-500">
+              האתגר הוא לא רק לבנות, אלא "להעביר את המפתח". איך מבטיחים שהלקוח או צוות הפיתוח יוכלו לתחזק קוד שנוצר ע"י AI? הפתרון הוא תיעוד ה-Prompts כחלק מה-Source Code.
+            </p>
+          </div>
+
+          <div className="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+            <ArrowRightLeft className="text-blue-500 mb-4" size={32} />
+            <h5 className="font-black text-slate-800 mb-2">מעבר בין סביבות</h5>
+            <p className="text-sm text-slate-500">
+              קל לבנות ב-Localhost, קשה להעביר ל-Production ממשלתי. האתגר הוא התאמת התוצר לתשתיות קיימות, ניהול Secrets והגדרת CI/CD שתומך בתוצרי AI.
+            </p>
+          </div>
+
+          <div className="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+            <ShieldCheck className="text-rose-500 mb-4" size={32} />
+            <h5 className="font-black text-slate-800 mb-2">אבטחת מידע (InfoSec)</h5>
+            <p className="text-sm text-slate-500">
+              הפיל שבחדר. קוד שנוצר במהירות עלול להכיל חולשות. נדרש תהליך "ניקוי" (Sanitization) ובדיקות חדירות לפני שכל תוצר Vibe עולה לאוויר במערכת קריטית.
+            </p>
+          </div>
+
+        </div>
+
+        <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-xl">
           <h4 className="text-white font-black mb-4 flex items-center gap-2 italic">
             <Zap className="text-yellow-400" /> הפאנץ' ליין המחקרי:
           </h4>
           <p className="text-xl font-light leading-relaxed">
-            ה-PM יכול להיות "צוות של אדם אחד" בשלב ההקמה (0 ל-1), אך הוא חייב "צוות של מומחים" בשלב ההפעלה והסקייל (1 ל-Infinity).
+            ה-PM יכול להיות "צוות של אדם אחד" בשלב ההקמה (0 ל-1), אך הוא חייב "צוות של מומחים" בשלב ההפעלה והסקייל (1 ל-Infinity) כדי לצלוח את אתגרי האבטחה והתחזוקה.
           </p>
         </div>
       </div>
@@ -507,7 +556,7 @@ const App: React.FC = () => {
           <footer className="mt-20 pt-8 border-t border-slate-200 flex justify-between items-center text-slate-400 text-xs font-bold">
             <div className="flex items-center gap-4">
               <span className="font-mono bg-slate-100 px-2 py-1 rounded">Page 0{navigation.findIndex(t => t.id === activeTab) + 1}</span>
-              <span className="hidden md:inline italic opacity-50">Draft v1.4 // March 2025</span>
+              <span className="hidden md:inline italic opacity-50">Draft v1.5 // March 2025</span>
             </div>
             <div className="flex gap-4">
               <button className="p-2 hover:bg-slate-100 rounded-full transition-colors" title="ערוך"><Edit3 size={16} /></button>
