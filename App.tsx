@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { 
   BookOpen, 
@@ -27,7 +28,6 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Research Data ---
-// Removed unused 'precision' as requested
 const researchResults = [
   { method: 'A: דרישות בלבד', stability: 3.5, speed: 2 },
   { method: 'B: דרישות+מסכים', stability: 4.8, speed: 4 },
@@ -38,9 +38,9 @@ const researchResults = [
 // --- Sub-components ---
 
 const SectionPlaceholder = ({ title }: { title: string }) => (
-  <div className="mt-6 p-8 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:border-indigo-300 hover:text-indigo-400 transition-colors cursor-pointer" role="button" aria-label={`Add content to ${title}`}>
+  <div className="mt-6 p-8 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:border-indigo-300 hover:text-indigo-400 transition-colors cursor-pointer" role="button" aria-label={`הוסף תוכן ל${title}`}>
     <Edit3 className="mb-2" size={24} />
-    <span className="font-medium">לחץ כאן להוספת תוכן לפרק: {title}</span>
+    <span className="font-medium text-sm">לחץ כאן להוספת תוכן לפרק: {title}</span>
   </div>
 );
 
@@ -81,7 +81,7 @@ const Abstract = () => (
 );
 
 const Introduction = () => (
-  <div className="space-y-8">
+  <div className="space-y-8 text-right">
     <AcademicCard title="1. מבוא ורקע היסטורי" icon={BookOpen}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="prose prose-slate text-lg leading-relaxed text-slate-600">
@@ -103,17 +103,17 @@ const Introduction = () => (
 );
 
 const Methodology = () => (
-  <div className="space-y-8">
+  <div className="space-y-8 text-right">
     <AcademicCard title="2. מתודולוגיית המחקר" icon={Settings}>
       <p className="text-lg text-slate-600 mb-8">
         לבחינת השפעת איכות האינפוט על התוצר, ביצענו ניסוי השוואתי ב-4 מתודולוגיות:
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
         {[
-          { id: 'A', title: 'The Documenter', desc: 'דרישות טקסט' },
-          { id: 'B', title: 'The Architect', desc: 'PRD + פתרון' },
-          { id: 'C', title: 'The Vibe Coder', desc: 'פרומפט Vibe' },
-          { id: 'D', title: 'The Iterative', desc: 'בנייה הדרגתית' },
+          { id: 'A', title: 'The Documenter', desc: 'דרישות טקסט בלבד' },
+          { id: 'B', title: 'The Architect', desc: 'PRD מפורט + פתרון' },
+          { id: 'C', title: 'The Vibe Coder', desc: 'פרומפט Vibe חופשי' },
+          { id: 'D', title: 'The Iterative', desc: 'בנייה הדרגתית ודינמית' },
         ].map(item => (
           <div key={item.id} className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm hover:border-indigo-200 transition-colors">
             <div className="w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-black">
@@ -129,7 +129,7 @@ const Methodology = () => (
 );
 
 const Results = () => (
-  <div className="space-y-8">
+  <div className="space-y-8 text-right">
     <AcademicCard title="3. ממצאים וניתוח נתונים" icon={BarChartIcon}>
       <div className="h-[400px] w-full">
         <ResponsiveContainer width="100%" height="100%">
@@ -158,7 +158,7 @@ const Results = () => (
 );
 
 const Discussion = () => (
-  <div className="space-y-8">
+  <div className="space-y-8 text-right">
     <AcademicCard title="4. דיון" icon={Lightbulb}>
       <div className="prose prose-indigo max-w-none text-slate-600 text-lg space-y-6">
         <p>
@@ -180,10 +180,10 @@ const Discussion = () => (
         <h4 className="font-black text-slate-800 mb-4 flex items-center gap-2">
           <ShieldAlert className="text-rose-500" /> מגבלות המודל (Constraints)
         </h4>
-        <ul className="space-y-3 text-slate-500">
-          <li className="flex gap-2"><span>•</span> אבטחת מידע ופרטיות בממשלה</li>
-          <li className="flex gap-2"><span>•</span> תחזוקה ארוכת טווח (Maintenance)</li>
-          <li className="flex gap-2"><span>•</span> אינטגרציות מורכבות</li>
+        <ul className="space-y-3 text-slate-500 text-right">
+          <li className="flex gap-2 flex-row-reverse"><span>•</span> אבטחת מידע ופרטיות בממשלה</li>
+          <li className="flex gap-2 flex-row-reverse"><span>•</span> תחזוקה ארוכת טווח (Maintenance)</li>
+          <li className="flex gap-2 flex-row-reverse"><span>•</span> אינטגרציות מורכבות</li>
         </ul>
       </div>
       <SectionPlaceholder title="דיון על אתיקה ו-Bias ב-AI" />
@@ -192,15 +192,15 @@ const Discussion = () => (
 );
 
 const Conclusion = () => (
-  <div className="space-y-8">
+  <div className="space-y-8 text-right">
     <AcademicCard title="5. סיכום" icon={CheckCircle2}>
       <div className="space-y-6 text-xl text-slate-700 font-light">
         <p>
           המלצת המחקר: אל תחליפו את הצוות, אלא <strong>הקדימו</strong> אותו.
         </p>
-        <p className="p-6 border-r-4 border-indigo-500 bg-indigo-50 italic rounded-l-xl">
+        <div className="p-6 border-r-4 border-indigo-500 bg-indigo-50 italic rounded-l-xl text-indigo-900">
           "הביאו גרסה עובדת, ותנו לצוות הפיתוח להפוך אותה למוצר ממשלתי אמין."
-        </p>
+        </div>
       </div>
     </AcademicCard>
   </div>
@@ -234,7 +234,7 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-slate-50 flex flex-row-reverse text-right selection:bg-indigo-100 selection:text-indigo-900">
       {/* Sidebar - Positioned on the right in RTL */}
       <aside className="w-80 bg-white border-r border-slate-200 flex flex-col fixed h-full z-10 shadow-sm right-0 overflow-y-auto">
-        <div className="p-8 border-b border-slate-100">
+        <div className="p-8 border-b border-slate-100 text-right">
           <div className="flex items-center flex-row-reverse gap-2 mb-2">
             <Zap className="text-indigo-600" size={24} fill="currentColor" />
             <h1 className="text-xl font-black text-slate-900 tracking-tighter italic">Vibe Coding Journal</h1>
@@ -270,7 +270,7 @@ const App: React.FC = () => {
         </div>
       </aside>
 
-      {/* Main Content Area - Pushed to the left by the fixed sidebar */}
+      {/* Main Content Area - Pushed to the left by the fixed right sidebar */}
       <main className="flex-1 mr-80 p-8 md:p-12 lg:p-20">
         <div className="max-w-5xl mx-auto">
           <AnimatePresence mode="wait">
