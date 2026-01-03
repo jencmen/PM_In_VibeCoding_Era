@@ -23,7 +23,9 @@ import {
   Handshake,
   User,
   MessageSquare,
-  Trophy
+  Trophy,
+  Cpu,
+  Globe
 } from 'lucide-react';
 import { 
   BarChart as ReBarChart, 
@@ -49,7 +51,7 @@ const methodologyData = [
   {
     id: 'A',
     title: 'The Documenter',
-    label: 'דרישות בלבד',
+    label: 'דרישות בלבד (A)',
     description: 'הגדרת ה"מה" ללא ה"איך". המודל ממלא את הפערים בעצמו.',
     color: 'bg-white',
     textColor: 'text-slate-900',
@@ -58,7 +60,7 @@ const methodologyData = [
   {
     id: 'B',
     title: 'The Architect',
-    label: 'PRD מלא + מסכים',
+    label: 'PRD מלא + מסכים (B)',
     description: 'הגדרה מדויקת הכוללת פתרון טכני ועיצוב מסכים.',
     color: 'bg-white',
     textColor: 'text-slate-900',
@@ -67,7 +69,7 @@ const methodologyData = [
   {
     id: 'C',
     title: 'The Vibe Coder',
-    label: 'פרומפט כללי',
+    label: 'פרומפט כללי (C)',
     description: 'תיאור חופשי של הרעיון (Vibe Only) ללא מסמכים.',
     color: 'bg-white',
     textColor: 'text-slate-900',
@@ -76,7 +78,7 @@ const methodologyData = [
   {
     id: 'D',
     title: 'The Iterative',
-    label: 'טעינה הדרגתית',
+    label: 'טעינה הדרגתית (D)',
     description: 'בניית הליבה תחילה ושיפור איטרטיבי (Winner).',
     color: 'bg-indigo-600',
     textColor: 'text-white',
@@ -94,6 +96,25 @@ const toolsLandscape = [
   { name: 'CURSOR', x: 75, y: 88, color: 'bg-slate-900' },
   { name: 'Claude', x: 90, y: 90, color: 'bg-orange-600' },
   { name: 'UX PILOT', x: 22, y: 10, color: 'bg-indigo-600' },
+];
+
+const selectedTools = [
+  {
+    name: 'Base 44',
+    icon: Globe,
+    desc: 'הפלטפורמה המרכזית לניהול ופריסת אפליקציות AI עם דגש על מהירות ואינטגרציה חלקה.',
+    benefit: 'Deploy מיידי וניהול קונטקסט.',
+    color: 'text-orange-600',
+    bgColor: 'bg-orange-50'
+  },
+  {
+    name: 'Google AI Studio',
+    icon: Cpu,
+    desc: 'סביבת העבודה המהירה ביותר לבדיקת פרומפטים מורכבים ודיוק ה-Vibe הלוגי של המערכת.',
+    benefit: 'גישה ישירה למודלים חזקים ודיוק איטרטיבי.',
+    color: 'text-blue-600',
+    bgColor: 'bg-blue-50'
+  }
 ];
 
 // --- Sub-components ---
@@ -169,7 +190,7 @@ const Abstract = () => (
 );
 
 const Introduction = () => (
-  <AcademicCard title="1. מבוא" icon={BookOpen}>
+  <AcademicCard title="1. מבוא (Introduction)" icon={BookOpen}>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div className="prose prose-slate text-lg text-slate-600">
         <p>מנהל המוצר כבר אינו רק מתרגם (Translator) – הוא הופך ל-Executor הראשון בשרשרת.</p>
@@ -185,7 +206,12 @@ const Introduction = () => (
 
 const Methodology = () => (
   <div className="space-y-8">
-    <AcademicCard title="2. מתודולוגיה" icon={Settings}>
+    <AcademicCard title="2. מתודולוגיה (Methodology): 4 דרכים שונות להגיע ל-MVP" icon={Settings}>
+      <div className="mb-8 p-6 bg-slate-50 rounded-3xl border border-slate-100">
+        <p className="text-slate-600 text-lg leading-relaxed">
+          במחקר זה בחנו ארבע אסטרטגיות שונות לבנייה מהירה של מוצר עובד. כל מתודולוגיה מייצגת איזון אחר בין חופש פעולה למודל (Vibe) לבין שליטה הדוקה של מנהל המוצר (Engineering).
+        </p>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {methodologyData.map(method => (
           <div key={method.id} className={`p-6 rounded-3xl border border-slate-200 shadow-sm relative overflow-hidden flex flex-col min-h-[180px] transition-transform hover:scale-[1.02] ${method.color} ${method.textColor}`}>
@@ -214,15 +240,41 @@ const Methodology = () => (
         ))}
       </div>
     </AcademicCard>
-    <AcademicCard title="2.1 מפת הכלים" icon={Wrench}>
-      <ToolQuadrant />
+
+    <AcademicCard title="2.1 בחירת הכלים והארכיטקטורה (Tools & Architecture)" icon={Wrench}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div className="space-y-6">
+          <h4 className="text-xl font-black text-slate-800 mb-4">הנבחרת המנצחת (Selected Stack)</h4>
+          <div className="grid grid-cols-1 gap-4">
+            {selectedTools.map((tool, idx) => (
+              <div key={idx} className={`p-6 rounded-2xl border border-slate-100 shadow-sm ${tool.bgColor}`}>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`p-2 rounded-lg bg-white shadow-sm ${tool.color}`}>
+                    <tool.icon size={24} />
+                  </div>
+                  <div className="font-black text-slate-900">{tool.name}</div>
+                </div>
+                <p className="text-slate-600 text-sm mb-3">{tool.desc}</p>
+                <div className="flex items-center gap-2 text-xs font-bold bg-white/50 w-fit px-3 py-1 rounded-full border border-white">
+                  <Zap size={12} className="text-yellow-500" />
+                  <span className="text-slate-700">{tool.benefit}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="bg-slate-50 p-6 rounded-[2rem] border border-slate-100">
+          <h5 className="text-sm font-black text-slate-400 uppercase tracking-widest mb-4">מפת המיצוב המלאה</h5>
+          <ToolQuadrant />
+        </div>
+      </div>
     </AcademicCard>
   </div>
 );
 
 const Results = () => (
   <div className="space-y-8">
-    <AcademicCard title="3. ממצאים" icon={BarChart}>
+    <AcademicCard title="3. ממצאים (Results)" icon={BarChart}>
       <div className="h-[400px] w-full mt-4">
         <ResponsiveContainer width="100%" height="100%">
           <ReBarChart data={researchResults}>
@@ -237,7 +289,7 @@ const Results = () => (
         </ResponsiveContainer>
       </div>
     </AcademicCard>
-    <AcademicCard title="3.1 השוואה ויזואלית" icon={Layout}>
+    <AcademicCard title="3.1 השוואה ויזואלית (Visual Comparison)" icon={Layout}>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <ScreenshotMock method="A" />
         <ScreenshotMock method="B" />
@@ -250,7 +302,7 @@ const Results = () => (
 
 const Discussion = () => (
   <div className="space-y-8">
-    <AcademicCard title="4. דיון: תובנות מהשטח וחוויה אישית" icon={Lightbulb}>
+    <AcademicCard title="4. דיון: תובנות מהשטח וחוויה אישית (Discussion)" icon={Lightbulb}>
       <div className="prose prose-indigo max-w-none text-slate-600 text-lg space-y-12">
         
         {/* Sub-chapter: Personal Experience */}
@@ -397,7 +449,7 @@ const Discussion = () => (
 );
 
 const Conclusion = () => (
-  <AcademicCard title="5. סיכום והמלצות" icon={CheckCircle2}>
+  <AcademicCard title="5. סיכום והמלצות (Conclusion)" icon={CheckCircle2}>
     <div className="space-y-6 text-xl text-slate-700 font-light">
       <p>המלצת המחקר: אל תחליפו את הצוות, אלא <strong>הקדימו</strong> אותו.</p>
       <div className="p-8 border-r-8 border-indigo-500 bg-indigo-50 italic rounded-2xl shadow-inner">
@@ -415,12 +467,12 @@ const Conclusion = () => (
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState('abstract');
   const navigation = [
-    { id: 'abstract', label: 'תקציר', icon: FileText },
-    { id: 'intro', label: '1. מבוא', icon: BookOpen },
-    { id: 'method', label: '2. מתודולוגיה', icon: Settings },
-    { id: 'results', label: '3. תוצאות', icon: BarChart },
-    { id: 'discussion', label: '4. דיון', icon: Lightbulb },
-    { id: 'conclusion', label: '5. סיכום', icon: CheckCircle2 },
+    { id: 'abstract', label: 'תקציר (Abstract)', icon: FileText },
+    { id: 'intro', label: '1. מבוא (Introduction)', icon: BookOpen },
+    { id: 'method', label: '2. מתודולוגיה (Methodology)', icon: Settings },
+    { id: 'results', label: '3. תוצאות (Results)', icon: BarChart },
+    { id: 'discussion', label: '4. דיון (Discussion)', icon: Lightbulb },
+    { id: 'conclusion', label: '5. סיכום (Conclusion)', icon: CheckCircle2 },
   ];
 
   return (
