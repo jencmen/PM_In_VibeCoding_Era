@@ -42,51 +42,43 @@ const researchResults = [
 ];
 
 const toolsLandscape = [
-  // Top-Left (High Ability / Less Technical) - Focus area
-  { name: 'Base 44', x: 26, y: 84, color: 'bg-orange-500 text-white', highlighted: true },
-  { name: 'Google AI Studio', x: 18, y: 68, color: 'bg-slate-900 text-white', highlighted: true },
-  { name: 'emergent', x: 42, y: 92, color: 'bg-slate-800 text-white' },
-  { name: 'Mocha', x: 34, y: 76, color: 'bg-white text-slate-800 border border-slate-200' },
-  { name: 'Dyad', x: 38, y: 62, color: 'bg-white text-purple-600 border border-slate-100' },
-  { name: 'Lovable', x: 47, y: 72, color: 'bg-white text-slate-900 border border-slate-100 font-bold' },
+  // High Ability / Less Technical (Top-Left)
+  { name: 'Base 44', x: 25, y: 80, color: 'bg-orange-500', highlighted: true },
+  { name: 'Google AI Studio', x: 20, y: 70, color: 'bg-slate-900', highlighted: true },
+  { name: 'emergent', x: 45, y: 85, color: 'bg-slate-800' },
+  { name: 'Mocha', x: 35, y: 75, color: 'bg-slate-900' },
+  { name: 'Dyad', x: 38, y: 70, color: 'bg-purple-600' },
+  { name: 'Lovable', x: 48, y: 75, color: 'bg-rose-500' },
   
-  // Top-Right (High Ability / More Technical)
-  { name: 'replit', x: 58, y: 88, color: 'bg-white text-slate-900 border border-slate-100' },
-  { name: 'CURSOR', x: 74, y: 94, color: 'bg-white text-slate-900 border border-slate-100' },
-  { name: 'Claude', x: 90, y: 90, color: 'bg-white text-orange-600 border border-slate-100' },
-  { name: 'Codex', x: 84, y: 82, color: 'bg-white text-slate-900 border border-slate-100' },
-  { name: 'bolt.new', x: 55, y: 65, color: 'bg-slate-900 text-white' },
-  { name: 'Rork', x: 68, y: 74, color: 'bg-slate-900 text-white' },
+  // High Ability / More Technical (Top-Right)
+  { name: 'replit', x: 55, y: 85, color: 'bg-red-600' },
+  { name: 'CURSOR', x: 75, y: 88, color: 'bg-slate-900' },
+  { name: 'Claude', x: 92, y: 92, color: 'bg-orange-600' },
+  { name: 'Codex', x: 88, y: 85, color: 'bg-slate-900' },
+  { name: 'bolt.new', x: 55, y: 72, color: 'bg-slate-900' },
+  { name: 'Rork', x: 68, y: 78, color: 'bg-slate-900' },
 
-  // Bottom-Left (Lower Ability / Less Technical)
-  { name: 'new.website', x: 15, y: 25, color: 'bg-white text-slate-900 border border-slate-200' },
-  { name: 'Figma Make', x: 28, y: 18, color: 'bg-white text-slate-900 border border-slate-200' },
-  { name: 'UX PILOT', x: 20, y: 10, color: 'bg-white text-blue-600 border border-slate-100' },
+  // Lower Ability / Less Technical (Bottom-Left)
+  { name: 'new.website', x: 15, y: 25, color: 'bg-slate-100 text-slate-900' },
+  { name: 'Figma Make', x: 28, y: 18, color: 'bg-slate-100 text-slate-900' },
+  { name: 'UX PILOT', x: 22, y: 10, color: 'bg-indigo-600' },
 ];
 
 // --- Sub-components ---
 
 const ToolQuadrant = () => (
-  <div className="relative w-full max-w-3xl aspect-[4/3] bg-[#fcfcfc] border border-slate-200 rounded-3xl overflow-visible mt-20 mb-20 shadow-xl mx-auto bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] [background-size:24px_24px]">
-    {/* Main Axis Lines */}
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="w-[2px] h-full bg-slate-900 absolute opacity-100 z-0"></div>
-      <div className="h-[2px] w-full bg-slate-900 absolute opacity-100 z-0"></div>
+  <div className="relative w-full aspect-square md:aspect-video bg-white border border-slate-200 rounded-3xl overflow-hidden mt-8 shadow-inner">
+    {/* Grid Lines */}
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="w-px h-full bg-slate-400 opacity-20"></div>
+      <div className="h-px w-full bg-slate-400 opacity-20"></div>
     </div>
 
-    {/* Labels at the end of axes */}
-    <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-black text-slate-900 text-xs md:text-sm whitespace-nowrap px-5 py-2 bg-white border-2 border-slate-900 rounded-full shadow-lg z-30 uppercase tracking-tighter">
-      High Ability/Power
-    </div>
-    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 font-black text-slate-900 text-xs md:text-sm whitespace-nowrap px-5 py-2 bg-white border-2 border-slate-900 rounded-full shadow-lg z-30 uppercase tracking-tighter">
-      Lower Ability/Power
-    </div>
-    <div className="absolute top-1/2 left-0 -translate-x-[60%] md:-translate-x-[75%] -translate-y-1/2 font-black text-slate-900 text-xs md:text-sm whitespace-nowrap px-5 py-2 bg-white border-2 border-slate-900 rounded-full shadow-lg z-30 uppercase tracking-tighter -rotate-90">
-      Less technical
-    </div>
-    <div className="absolute top-1/2 right-0 translate-x-[60%] md:translate-x-[75%] -translate-y-1/2 font-black text-slate-900 text-xs md:text-sm whitespace-nowrap px-5 py-2 bg-white border-2 border-slate-900 rounded-full shadow-lg z-30 uppercase tracking-tighter rotate-90">
-      More technical
-    </div>
+    {/* Axis Labels */}
+    <div className="absolute top-4 left-1/2 -translate-x-1/2 font-black text-slate-300 uppercase text-[10px] tracking-widest">High Ability / Power</div>
+    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-black text-slate-300 uppercase text-[10px] tracking-widest">Lower Ability / Power</div>
+    <div className="absolute top-1/2 left-4 -translate-y-1/2 font-black text-slate-300 uppercase text-[10px] tracking-widest -rotate-90 origin-left">Less technical</div>
+    <div className="absolute top-1/2 right-4 translate-y-1/2 font-black text-slate-300 uppercase text-[10px] tracking-widest rotate-90 origin-right">More technical</div>
 
     {/* Tools */}
     {toolsLandscape.map((tool, idx) => (
@@ -94,15 +86,15 @@ const ToolQuadrant = () => (
         key={idx}
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: idx * 0.03, type: 'spring', stiffness: 200, damping: 15 }}
-        className={`absolute px-3.5 py-2 rounded-xl shadow-lg text-[10px] md:text-xs font-black flex items-center gap-2 cursor-default hover:scale-110 transition-transform ${tool.color} ${tool.highlighted ? 'ring-4 ring-yellow-400 ring-offset-2 z-20 scale-110 shadow-yellow-200/50' : 'z-10'}`}
+        transition={{ delay: idx * 0.05 }}
+        className={`absolute px-3 py-1.5 rounded-lg text-[9px] md:text-xs font-black shadow-sm flex items-center gap-1 cursor-default hover:scale-110 transition-transform ${tool.color.includes('text') ? tool.color : tool.color + ' text-white'} ${tool.highlighted ? 'ring-2 ring-yellow-400 ring-offset-2 scale-110 z-10' : ''}`}
         style={{ 
           left: `${tool.x}%`, 
           bottom: `${tool.y}%`,
           transform: 'translate(-50%, 50%)'
         }}
       >
-        {tool.highlighted && <Zap size={14} className="text-yellow-400 fill-current" />}
+        {tool.highlighted && <Zap size={10} className="text-yellow-400 fill-current" />}
         {tool.name}
       </motion.div>
     ))}
@@ -110,19 +102,19 @@ const ToolQuadrant = () => (
 );
 
 const SectionPlaceholder = ({ title }: { title: string }) => (
-  <div className="mt-6 p-10 bg-slate-50 border-2 border-dashed border-slate-200 rounded-3xl flex flex-col items-center justify-center text-slate-400 group hover:border-indigo-400 hover:bg-indigo-50/30 hover:text-indigo-500 transition-all cursor-pointer">
+  <div className="mt-6 p-8 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 group hover:border-indigo-300 hover:text-indigo-400 transition-colors cursor-pointer">
     <Edit3 className="mb-2" size={24} />
-    <span className="font-bold tracking-tight">לחץ כאן להוספת תוכן לפרק: {title}</span>
+    <span className="font-medium">לחץ כאן להוספת תוכן לפרק: {title}</span>
   </div>
 );
 
 const AcademicCard = ({ children, title, icon: Icon }: { children?: React.ReactNode, title: string, icon: any }) => (
-  <div className="bg-white border border-slate-200 rounded-[2.5rem] p-10 shadow-sm mb-10">
-    <div className="flex items-center gap-4 mb-8 pb-6 border-b border-slate-100">
-      <div className="bg-indigo-600 p-3 rounded-2xl text-white shadow-lg shadow-indigo-100">
-        <Icon size={24} />
+  <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm mb-8">
+    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+      <div className="bg-indigo-50 p-2 rounded-lg text-indigo-600">
+        <Icon size={20} />
       </div>
-      <h3 className="text-2xl font-black text-slate-900 tracking-tight">{title}</h3>
+      <h3 className="text-xl font-black text-slate-800 tracking-tight">{title}</h3>
     </div>
     {children}
   </div>
@@ -132,141 +124,127 @@ const AcademicCard = ({ children, title, icon: Icon }: { children?: React.ReactN
 
 const Abstract = () => (
   <div className="max-w-3xl">
-    <h1 className="text-6xl font-black text-slate-900 mb-8 leading-[1.1] tracking-tighter">
-      שינוי פרדיגמת ה-Product Management בעידן ה-Vibe Coding
+    <h1 className="text-5xl font-black text-slate-900 mb-6 leading-tight">
+      שינוי פרדיגמת ה-Product Management בעידן ה-Vibe Coding: ממתווך לבונה
     </h1>
-    <div className="bg-indigo-900 text-white p-12 rounded-[3rem] shadow-2xl relative overflow-hidden mb-12 border-b-8 border-indigo-700">
-      <Quote className="absolute top-8 right-8 opacity-10" size={100} />
-      <h2 className="text-sm font-black mb-6 border-b border-white/10 pb-4 uppercase tracking-[0.3em] text-indigo-300">תקציר מחקרי (Abstract)</h2>
-      <p className="text-2xl font-medium leading-relaxed italic text-indigo-50">
-        "מחקר זה מנתח את הטרנספורמציה של מנהל המוצר מ'מתווך דרישות' ל'בנאי פעיל'. בעידן ה-Vibe Coding, היכולת לייצר קוד עובד ללא ידע תכנותי עמוק הופכת את ה-PM ל'צוות של איש אחד' בשלבי ה-0 ל-1, ומגדירה מחדש את גבולות האחריות בין מוצר לפיתוח."
+    <div className="bg-indigo-900 text-white p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden mb-12">
+      <Quote className="absolute top-6 right-6 opacity-20" size={64} />
+      <h2 className="text-xl font-bold mb-4 border-b border-white/20 pb-2 uppercase tracking-widest text-indigo-300">תקציר (Abstract)</h2>
+      <p className="text-2xl font-light leading-relaxed italic">
+        "מחקר זה בוחן את השפעת כלי ה-AI Generative על תפקיד מנהל המוצר. הטיעון המרכזי הוא כי Vibe Coding אינו רק כלי פיתוח, אלא טרנספורמציה של ה-PM מ'מתווך דרישות' ל'מייצר מוצר עובד'. המחקר מנתח את גבולות היכולת של 'צוות של איש אחד' בשלבי ה-0 ל-1 לעומת שלבי ה-Scale."
       </p>
     </div>
-    <div className="flex gap-4 mb-8">
-      {['Vibe Coding', 'AI Agents', 'PM Revolution', 'Product-Led Engineering'].map(tag => (
-        <span key={tag} className="px-4 py-2 bg-slate-200 text-slate-600 rounded-full text-xs font-black uppercase tracking-widest">{tag}</span>
-      ))}
-    </div>
-    <SectionPlaceholder title="סקירה תיאורטית" />
+    <SectionPlaceholder title="מילות מפתח והגדרות יסוד" />
   </div>
 );
 
 const Introduction = () => (
   <div className="space-y-8">
-    <AcademicCard title="1. מבוא: שבירת חומת ה-Handoff" icon={BookOpen}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div className="prose prose-slate text-xl leading-relaxed text-slate-700">
-          <p className="font-medium">
-            הפרדיגמה הישנה נשענה על מסמכי דרישות ארוכים. ה-PM כתב, המעצב צייר, והמפתח בנה. 
+    <AcademicCard title="1. מבוא ורקע היסטורי" icon={BookOpen}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="prose prose-slate text-lg leading-relaxed text-slate-600">
+          <p>
+            בעשור האחרון, תפקיד מנהל המוצר הוגדר כצומת שבין טכנולוגיה, משתמש ועסקים. ה-PM פעל כ"מתרגם" – העברת צרכי לקוח למסמכי דרישות (PRD) עבור צוותי פיתוח.
           </p>
-          <p className="mt-6 p-6 bg-slate-50 rounded-2xl border-r-8 border-indigo-500 font-bold text-slate-900">
-            הבעיה: איבוד קונטקסט בתרגום. בעידן ה-AI, המודל הופך למתרגם הישיר, ומאפשר ל-PM לדלג על שלב התיווך.
+          <p className="mt-4 font-bold text-slate-800">
+            הבעיה: תהליך ה-Handoff יצר "צווארי בקבוק" מובנים, איבוד קונטקסט וזמן המתנה ארוך לתיקוף (Validation).
           </p>
         </div>
-        <div className="bg-slate-900 p-8 rounded-[2rem] flex flex-col items-center justify-center text-white relative overflow-hidden group transition-all hover:scale-[1.02]">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/20 blur-3xl"></div>
-          <Users size={64} className="text-indigo-400 mb-6 group-hover:rotate-12 transition-transform" />
-          <span className="text-center text-xl font-black italic">"ה-PM הופך לבונה - ה-Dev הופך לארכיטקט"</span>
-          <div className="mt-8 flex gap-2">
-            <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></div>
-            <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse delay-75"></div>
-            <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse delay-150"></div>
-          </div>
+        <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col items-center justify-center">
+          <Users size={48} className="text-slate-300 mb-4" />
+          <span className="text-center font-bold text-slate-500 italic">"ה-PM הישן: סופר של מסמכים המקווה למוצר"</span>
         </div>
       </div>
     </AcademicCard>
-    <SectionPlaceholder title="ניתוח הסטורי של כלי פיתוח" />
+    <SectionPlaceholder title="סקירת ספרות: כלי Low-Code לעומת Vibe Coding" />
   </div>
 );
 
 const Methodology = () => (
-  <div className="space-y-12">
-    <AcademicCard title="2. מתודולוגיה: ארבעת המודלים של ה-Builder" icon={Settings}>
-      <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-        ביצענו מחקר אורך הבוחן 4 גישות שונות ליצירת MVP באמצעות AI. הממצאים מצביעים על עדיפות ברורה לגישה האיטרטיבית.
+  <div className="space-y-8">
+    <AcademicCard title="2. מתודולוגיית המחקר: הניסוי המבוקר" icon={Settings}>
+      <p className="text-lg text-slate-600 mb-8">
+        לבחינת השפעת איכות האינפוט על התוצר, ביצענו ניסוי השוואתי על אותה מערכת (MVP פנימי) ב-4 מתודולוגיות שונות:
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {[
           { 
             id: 'A', 
-            title: 'The Pure Documenter', 
-            subtitle: 'דרישות בלבד', 
-            desc: 'כתיבת ה"מה" ללא התייחסות ל"איך". רמת חופש גבוהה למודל, רמת דיוק נמוכה.',
+            title: 'The Documenter', 
+            subtitle: 'דרישות בלבד (A)', 
+            desc: 'הגדרת ה"מה" ללא ה"איך". המודל ממלא את הפערים בעצמו.',
             color: 'bg-slate-100 text-slate-800'
           },
           { 
             id: 'B', 
-            title: 'The Detailed Architect', 
-            subtitle: 'PRD + Solution Design', 
-            desc: 'הגדרה מדויקת הכוללת מבנה נתונים ודיאגרמות זרימה. יציבות גבוהה.',
-            color: 'bg-indigo-50 text-indigo-800'
+            title: 'The Architect', 
+            subtitle: 'PRD מלא + מסכים (B)', 
+            desc: 'הגדרה מדויקת הכוללת פתרון טכני ועיצוב מסכים.',
+            color: 'bg-blue-50 text-blue-800'
           },
           { 
             id: 'C', 
             title: 'The Vibe Coder', 
-            subtitle: 'One Prompt Build', 
-            desc: 'תיאור אמורפי של ה"Vibe". מהיר מאוד אך קשה לתחזוקה ולתיקון.',
+            subtitle: 'פרומפט כללי (C)', 
+            desc: 'תיאור חופשי של הרעיון (Vibe Only) ללא מסמכים.',
             color: 'bg-purple-50 text-purple-800'
           },
           { 
             id: 'D', 
-            title: 'The Iterative Builder', 
-            subtitle: 'טעינה מדורגת', 
-            desc: 'בניית הליבה תחילה ושיפור איטרטיבי מבוסס פידבק. התוצאה הטובה ביותר.',
+            title: 'The Iterative', 
+            subtitle: 'טעינה הדרגתית (D)', 
+            desc: 'בניית הליבה תחילה ושיפור איטרטיבי (Winner).',
             winner: true,
-            color: 'bg-indigo-600 text-white shadow-2xl shadow-indigo-200'
+            color: 'bg-indigo-600 text-white shadow-xl shadow-indigo-100'
           },
         ].map(item => (
-          <div key={item.id} className={`p-8 rounded-[2.5rem] border border-slate-200 shadow-sm relative overflow-hidden transition-all hover:-translate-y-2 ${item.winner ? 'ring-8 ring-indigo-100' : ''}`}>
+          <div key={item.id} className={`p-6 rounded-3xl border border-slate-200 shadow-sm relative overflow-hidden transition-all hover:scale-[1.02] ${item.winner ? 'ring-4 ring-indigo-200' : ''}`}>
             {item.winner && (
-              <div className="absolute top-6 left-6 bg-yellow-400 text-slate-900 px-4 py-1.5 rounded-full text-xs font-black flex items-center gap-2 shadow-md">
-                <Award size={14} /> RECOMMENDED
+              <div className="absolute top-4 left-4 bg-yellow-400 text-slate-900 px-3 py-1 rounded-full text-[10px] font-black flex items-center gap-1 shadow-sm">
+                <Award size={12} /> WINNER
               </div>
             )}
-            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 font-black text-2xl shadow-inner ${item.color}`}>
+            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 font-black text-xl ${item.color}`}>
               {item.id}
             </div>
-            <h4 className="text-xl font-black text-slate-900 mb-1 tracking-tight">{item.title}</h4>
-            <h5 className="text-sm font-bold text-indigo-500 mb-4 uppercase tracking-widest">{item.subtitle}</h5>
-            <p className="text-slate-600 leading-relaxed font-medium">{item.desc}</p>
+            <h4 className="text-lg font-black text-slate-900 mb-1">{item.title}</h4>
+            <h5 className="text-sm font-bold text-indigo-600 mb-3">{item.subtitle}</h5>
+            <p className="text-slate-600 leading-relaxed text-sm">{item.desc}</p>
           </div>
         ))}
       </div>
     </AcademicCard>
 
-    <AcademicCard title="2.1 מפת הדרכים הטכנולוגית" icon={Wrench}>
-      <p className="text-xl text-slate-600 mb-12">
-        המפה הבאה מגדירה את מרחב הכלים הנוכחי. השילוב האידיאלי עבור PM נמצא ברביע השמאלי-עליון: יכולת בנייה מקסימלית במינימום חסם טכני.
+    <AcademicCard title="2.1 בחירת כלי: מפת ה-Vibe Coding" icon={Wrench}>
+      <p className="text-lg text-slate-600 mb-4">
+        מיפוי האקו-סיסטם הנוכחי של כלי ה-AI לפיתוח ובניית מוצרים. המחקר מנתח את הכלים לפי ציר היכולת הטכנית מול עוצמת הכלי (Power).
       </p>
       
-      <div className="p-4 md:p-12 bg-slate-50 border border-slate-200 rounded-[3rem] shadow-inner">
-        <ToolQuadrant />
-        
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-          <motion.div whileHover={{ scale: 1.02 }} className="bg-white p-10 rounded-[3rem] shadow-lg border border-orange-100 ring-4 ring-orange-50 relative overflow-hidden">
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-orange-500/10 blur-[80px] rounded-full"></div>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="bg-orange-500 p-3 rounded-2xl shadow-lg">
-                <Zap size={24} className="text-white fill-current" />
+      <div className="p-6 bg-slate-50 border border-slate-100 rounded-3xl">
+        <div className="flex flex-col md:flex-row gap-6 mb-8">
+          <div className="flex-1 space-y-4">
+            <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 ring-2 ring-orange-100">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="bg-orange-500 w-3 h-3 rounded-full shadow-sm shadow-orange-200"></div>
+                <h5 className="font-black text-slate-900">Base 44</h5>
               </div>
-              <h5 className="font-black text-3xl text-slate-900 tracking-tighter italic">Base 44</h5>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                נבחר ככלי מוביל בשל השילוב בין יכולת בנייה מלאה (App Building) לבין ממשק ידידותי למנהלי מוצר.
+              </p>
             </div>
-            <p className="text-slate-700 leading-relaxed text-lg font-medium">
-              כלי ה-MVP המרכזי במחקר. מאפשר ל-PM ליצור אפליקציות מורכבות ללא כתיבת קוד, תוך הבנה מבנית של מסדי נתונים ו-API.
-            </p>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.02 }} className="bg-white p-10 rounded-[3rem] shadow-lg border border-slate-100 ring-4 ring-slate-50 relative overflow-hidden">
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-slate-900/10 blur-[80px] rounded-full"></div>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="bg-slate-900 p-3 rounded-2xl shadow-lg">
-                <Cpu size={24} className="text-white" />
+            <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 ring-2 ring-slate-200">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="bg-slate-900 w-3 h-3 rounded-full shadow-sm shadow-slate-400"></div>
+                <h5 className="font-black text-slate-900">Google AI Studio</h5>
               </div>
-              <h5 className="font-black text-3xl text-slate-900 tracking-tighter">AI Studio</h5>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                עמוד השדרה של תהליכי ה-Iterative Prototyping, המאפשר אינטראקציה ישירה עם המודלים המתקדמים ביותר.
+              </p>
             </div>
-            <p className="text-slate-700 leading-relaxed text-lg font-medium">
-              מעבדת הניסויים של Gemini. המקום בו מזקקים את הפרומפטים והלוגיקות המרכזיות לפני שהן הופכות לרכיבי מוצר.
-            </p>
-          </motion.div>
+          </div>
+          <div className="flex-[2]">
+            <ToolQuadrant />
+          </div>
         </div>
       </div>
     </AcademicCard>
@@ -275,30 +253,28 @@ const Methodology = () => (
 
 const Results = () => (
   <div className="space-y-8">
-    <AcademicCard title="3. ממצאים: יעילות מול יציבות" icon={BarChart}>
-      <div className="h-[450px] w-full mt-6 bg-slate-50 p-8 rounded-[2rem] border border-slate-100">
+    <AcademicCard title="3. ממצאים וניתוח נתונים" icon={BarChart}>
+      <div className="h-[400px] w-full mt-4">
         <ResponsiveContainer width="100%" height="100%">
           <ReBarChart data={researchResults} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="4 4" vertical={false} stroke="#e2e8f0" />
-            <XAxis dataKey="method" axisLine={false} tickLine={false} tick={{fill: '#475569', fontWeight: '900', fontSize: 14}} />
-            <YAxis axisLine={false} tickLine={false} tick={{fill: '#94a3b8'}} />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+            <XAxis dataKey="method" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontWeight: 'bold'}} />
+            <YAxis axisLine={false} tickLine={false} />
             <RechartsTooltip 
-              cursor={{fill: '#f8fafc'}}
-              contentStyle={{ borderRadius: '1.5rem', border: 'none', boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.15)', direction: 'rtl', padding: '1.5rem' }}
+              contentStyle={{ borderRadius: '1.5rem', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', direction: 'rtl' }}
             />
-            <Legend verticalAlign="top" align="right" wrapperStyle={{ paddingBottom: '2rem', fontWeight: 'bold' }} />
-            <Bar dataKey="stability" name="מדד יציבות הקוד (1-5)" fill="#4f46e5" radius={[12, 12, 0, 0]} barSize={40} />
-            <Bar dataKey="speed" name="מהירות הגעה ל-MVP (1-5)" fill="#94a3b8" radius={[12, 12, 0, 0]} barSize={40} />
+            <Legend verticalAlign="top" height={36}/>
+            <Bar dataKey="stability" name="מדד יציבות" fill="#6366f1" radius={[6, 6, 0, 0]} />
+            <Bar dataKey="speed" name="מהירות פיתוח" fill="#cbd5e1" radius={[6, 6, 0, 0]} />
           </ReBarChart>
         </ResponsiveContainer>
       </div>
-      <div className="mt-12 p-8 bg-indigo-900 text-white rounded-[2.5rem] shadow-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[100px] rounded-full"></div>
-        <h4 className="font-black text-2xl mb-4 flex items-center gap-3">
-          <TrendingUp size={28} className="text-indigo-400" /> המסקנה המחקרית:
+      <div className="mt-8 p-6 bg-indigo-50 border border-indigo-100 rounded-2xl">
+        <h4 className="font-bold text-indigo-900 mb-2 flex items-center gap-2">
+          <TrendingUp size={20} /> תובנה מרכזית:
         </h4>
-        <p className="text-xl text-indigo-100 font-light leading-relaxed">
-          קיים "עמק הבכא" בין מהירות ליציבות. גישה C (Vibe) מהירה מאוד אך אינה יציבה. גישה D (איטרטיבית) היא ה-Sweet Spot המשלבת יציבות של 90% עם מהירות פיתוח גבוהה.
+        <p className="text-indigo-800 text-lg">
+          נמצא קשר ישיר בין רמת הפירוט ה"ארכיטקטונית" (שיטה B ו-D) לבין יציבות הקוד. בניגוד למיתוס, ה-Vibe לבדו (שיטה C) אינו מספיק לייצור מוצר אמין.
         </p>
       </div>
     </AcademicCard>
@@ -307,62 +283,59 @@ const Results = () => (
 
 const Discussion = () => (
   <div className="space-y-8">
-    <AcademicCard title="4. דיון: תפקיד ה-PM החדש" icon={Lightbulb}>
-      <div className="prose prose-indigo max-w-none text-slate-700 text-xl space-y-8">
-        <p className="font-medium">
-          ה-PM כבר אינו "מנהל עבודה" אלא "שותף ליצירה". היכולת להוציא תוצר עובד תוך שעות מחייבת שינוי תפיסה ארגוני.
+    <AcademicCard title="4. דיון: המעבר מ-Manager ל-Builder" icon={Lightbulb}>
+      <div className="prose prose-indigo max-w-none text-slate-600 text-lg space-y-6">
+        <p>
+          המחקר מוכיח כי ה-PM כבר אינו רק "מנהל" אלא "בונה". היכולת להוציא תוצר עובד (MVP) ללא תלות בצוות פיתוח בשלבים המוקדמים משנה את יחסי הכוחות בארגון.
         </p>
-        <div className="bg-slate-50 border-2 border-slate-200 p-10 rounded-[3rem] relative">
-          <div className="absolute -top-4 -right-4 bg-indigo-600 text-white p-3 rounded-2xl shadow-lg">
-            <Zap size={24} fill="currentColor" />
-          </div>
-          <h4 className="text-slate-900 font-black text-2xl mb-6 italic tracking-tight">The "One Person Team" Fallacy</h4>
-          <p className="text-slate-600 leading-relaxed font-medium">
-            למרות שה-PM יכול לבנות לבדו ב-Vibe Coding, המחקר מראה כי איכות המוצר הסופי עדיין תלויה בביקורת עמיתים ובתשתיות פיתוח חזקות. ה-AI מקצר את הדרך, אך לא מבטל את הצורך במקצוענות.
+        <div className="bg-slate-900 text-white p-8 rounded-3xl">
+          <h4 className="text-white font-black mb-4 flex items-center gap-2 italic">
+            <Zap className="text-yellow-400" /> הפאנץ' ליין המחקרי:
+          </h4>
+          <p className="text-xl font-light leading-relaxed">
+            ה-PM יכול להיות "צוות של אדם אחד" בשלב ההקמה (0 ל-1), אך הוא חייב "צוות של מומחים" בשלב ההפעלה והסקייל (1 ל-Infinity).
           </p>
         </div>
       </div>
     </AcademicCard>
     
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <div className="bg-rose-50 border border-rose-100 p-10 rounded-[3rem] shadow-sm">
-        <h4 className="font-black text-rose-900 text-2xl mb-6 flex items-center gap-3">
-          <ShieldAlert size={28} /> סיכונים ואתגרים
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="bg-white border border-slate-200 p-8 rounded-3xl">
+        <h4 className="font-black text-slate-800 mb-4 flex items-center gap-2">
+          <ShieldAlert className="text-rose-500" /> מגבלות המודל (Constraints)
         </h4>
-        <ul className="space-y-4 text-rose-800 text-lg font-bold">
-          <li className="flex gap-3 items-start"><span className="w-2 h-2 rounded-full bg-rose-500 mt-2 shrink-0"></span> אבטחת מידע ו-Shadow IT</li>
-          <li className="flex gap-3 items-start"><span className="w-2 h-2 rounded-full bg-rose-500 mt-2 shrink-0"></span> איבוד יכולת התחזוקה (Legacy AI Code)</li>
-          <li className="flex gap-3 items-start"><span className="w-2 h-2 rounded-full bg-rose-500 mt-2 shrink-0"></span> אינטגרציות למערכות ליבה</li>
+        <ul className="space-y-3 text-slate-500">
+          <li className="flex gap-2"><span>•</span> אבטחת מידע ופרטיות בממשלה</li>
+          <li className="flex gap-2"><span>•</span> תחזוקה ארוכת טווח (Maintenance)</li>
+          <li className="flex gap-2"><span>•</span> אינטגרציות מורכבות</li>
         </ul>
       </div>
-      <SectionPlaceholder title="אתיקה של פיתוח מבוסס AI" />
+      <SectionPlaceholder title="דיון על אתיקה ו-Bias ב-AI" />
     </div>
   </div>
 );
 
 const Conclusion = () => (
-  <div className="space-y-12">
-    <AcademicCard title="5. סיכום והמלצות פרקטיות" icon={CheckCircle2}>
-      <div className="space-y-8 text-2xl text-slate-800 font-medium leading-relaxed">
+  <div className="space-y-8">
+    <AcademicCard title="5. סיכום והמלצות ליישום" icon={CheckCircle2}>
+      <div className="space-y-6 text-xl text-slate-700 font-light">
         <p>
-          ה-Vibe Coding הוא המהפכה התעשייתית של ניהול המוצר. ההמלצה שלנו:
+          המלצת המחקר למנהלי מוצר בממשלה: אל תחליפו את הצוות, אלא <strong>הקדימו</strong> אותו.
         </p>
-        <div className="p-10 border-r-8 border-indigo-600 bg-indigo-50/50 rounded-2xl italic shadow-inner">
-          "אל תבקשו אישור לבנות - תבנו ואז תבקשו פידבק. המרחק בין רעיון למוצר עובד מעולם לא היה קצר יותר."
-        </div>
+        <p className="p-6 border-r-4 border-indigo-500 bg-indigo-50 italic">
+          "הביאו גרסה עובדת, ותנו לצוות הפיתוח להפוך אותה למוצר ממשלתי אמין."
+        </p>
       </div>
-      <div className="mt-16 flex flex-wrap gap-6">
-        <motion.button whileHover={{ scale: 1.05 }} className="bg-indigo-600 text-white px-10 py-5 rounded-[2rem] font-black text-lg flex items-center gap-3 hover:bg-indigo-700 transition-all shadow-2xl shadow-indigo-200">
-          <FileText size={24} /> הורד את המחקר המלא
-        </motion.button>
-        <motion.button whileHover={{ scale: 1.05 }} className="bg-white border-2 border-slate-200 text-slate-900 px-10 py-5 rounded-[2rem] font-black text-lg hover:bg-slate-50 transition-all shadow-lg">
-          ביבליוגרפיה (34 מקורות)
-        </motion.button>
+      <div className="mt-12 flex flex-wrap gap-4">
+        <button className="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100">
+          <FileText size={20} /> הורד את המאמר המלא (PDF)
+        </button>
+        <button className="border border-slate-200 text-slate-600 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 transition-all">
+          ביבליוגרפיה ונספחים
+        </button>
       </div>
     </AcademicCard>
-    <div className="text-center pb-20 opacity-30">
-      <p className="text-xs font-black uppercase tracking-[0.5em]">End of Presentation // March 2025</p>
-    </div>
+    <SectionPlaceholder title="הצעות למחקרי המשך" />
   </div>
 );
 
@@ -379,54 +352,53 @@ const App: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-row selection:bg-indigo-100 selection:text-indigo-900">
+    <div className="min-h-screen bg-slate-50 flex flex-row">
       {/* Sidebar Navigation - Fixed Right for RTL layout */}
-      <aside className="w-80 bg-white border-l border-slate-200 flex flex-col fixed h-full z-10 shadow-xl right-0 overflow-y-auto custom-scrollbar">
-        <div className="p-10 border-b border-slate-100 bg-slate-50/30">
-          <div className="flex items-center gap-3 mb-3">
-            <Zap className="text-indigo-600" size={32} fill="currentColor" />
-            <h1 className="text-2xl font-black text-slate-900 tracking-tighter italic leading-none">Vibe Coding<br/>Journal</h1>
+      <aside className="w-80 bg-white border-l border-slate-200 flex flex-col fixed h-full z-10 shadow-sm right-0 overflow-y-auto custom-scrollbar">
+        <div className="p-8 border-b border-slate-100">
+          <div className="flex items-center gap-2 mb-2">
+            <Zap className="text-indigo-600" size={24} fill="currentColor" />
+            <h1 className="text-xl font-black text-slate-900 tracking-tighter italic">Vibe Coding Journal</h1>
           </div>
-          <p className="text-[10px] text-indigo-500 font-black uppercase tracking-[0.2em]">Scientific PM Frameworks</p>
+          <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">Innovation in PM Frameworks</p>
         </div>
         
-        <nav className="flex-1 p-6 space-y-2">
+        <nav className="flex-1 p-4 space-y-1">
           {navigation.map((item) => (
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
-              className={`w-full flex items-center gap-4 px-5 py-5 rounded-[1.5rem] text-right font-black transition-all group ${
+              className={`w-full flex items-center gap-3 px-4 py-4 rounded-2xl text-right font-bold transition-all ${
                 activeTab === item.id 
-                  ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-200 scale-[1.02]' 
-                  : 'text-slate-400 hover:text-slate-900 hover:bg-slate-50'
+                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100' 
+                  : 'text-slate-500 hover:bg-slate-50'
               }`}
             >
-              <item.icon size={20} className={activeTab === item.id ? 'text-white' : 'text-slate-300 group-hover:text-indigo-500'} />
-              <span className="text-base tracking-tight">{item.label}</span>
+              <item.icon size={18} />
+              <span>{item.label}</span>
             </button>
           ))}
         </nav>
 
-        <div className="p-8 border-t border-slate-100 bg-slate-50/50">
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Status</div>
-            <div className="text-indigo-600 font-black text-sm">PEER REVIEWED</div>
+        <div className="p-6 border-t border-slate-100 bg-slate-50/50">
+          <div className="p-4 rounded-xl text-xs text-slate-400 font-medium leading-relaxed">
+            סטטוס טיוטה: <br/><span className="text-indigo-500 font-bold">מחכה לנתונים נוספים</span>
           </div>
         </div>
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 mr-80 p-8 md:p-16 lg:p-24 bg-[url('https://www.transparenttextures.com/patterns/notebook.png')]">
-        <div className="max-w-6xl mx-auto">
+      <main className="flex-1 mr-80 p-8 md:p-12 lg:p-20">
+        <div className="max-w-5xl mx-auto">
           {/* Header Info */}
-          <div className="flex justify-between items-center mb-20 text-slate-400 text-[10px] font-black uppercase tracking-[0.4em]">
-            <div className="flex gap-12">
-              <span>VOL 01 / ISSUE 2025</span>
-              <span className="hidden lg:inline">Product Management Revolution</span>
+          <div className="flex justify-between items-start mb-16 text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-widest">
+            <div className="flex gap-4 md:gap-8">
+              <span>ISSN: 2025-PRODUCT-REVOLUTION</span>
+              <span className="hidden md:inline">Volume 1, Issue 1</span>
             </div>
-            <div className="flex items-center gap-3 text-indigo-600 cursor-pointer group">
-              <span className="group-hover:underline">Cite this paper</span>
-              <ExternalLink size={12} />
+            <div className="flex items-center gap-2 text-indigo-500 cursor-pointer hover:underline">
+              <Search size={14} />
+              <span>Cite this paper</span>
             </div>
           </div>
 
@@ -434,10 +406,10 @@ const App: React.FC = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
             >
               {activeTab === 'abstract' && <Abstract />}
               {activeTab === 'intro' && <Introduction />}
@@ -448,16 +420,15 @@ const App: React.FC = () => {
             </motion.div>
           </AnimatePresence>
 
-          {/* Page Footer */}
-          <footer className="mt-32 pt-10 border-t-2 border-slate-100 flex justify-between items-center text-slate-300 text-[10px] font-black">
-            <div className="flex items-center gap-6">
-              <span className="font-mono bg-slate-200 text-slate-500 px-3 py-1 rounded-full">PAGE 0{navigation.findIndex(t => t.id === activeTab) + 1}</span>
-              <span className="italic opacity-50 tracking-[0.2em]">VIBE CODING SCIENTIFIC JOURNAL</span>
+          {/* Bottom Nav */}
+          <footer className="mt-20 pt-8 border-t border-slate-200 flex justify-between items-center text-slate-400 text-xs font-bold">
+            <div className="flex items-center gap-4">
+              <span className="font-mono bg-slate-100 px-2 py-1 rounded">Page 0{navigation.findIndex(t => t.id === activeTab) + 1}</span>
+              <span className="hidden md:inline italic opacity-50">Draft v1.4 // March 2025</span>
             </div>
-            <div className="flex gap-6 items-center">
-              <button className="hover:text-indigo-500 transition-colors uppercase">Metadata</button>
-              <button className="hover:text-indigo-500 transition-colors uppercase">Archives</button>
-              <button className="p-3 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-2xl transition-all shadow-sm"><Edit3 size={14} /></button>
+            <div className="flex gap-4">
+              <button className="p-2 hover:bg-slate-100 rounded-full transition-colors" title="ערוך"><Edit3 size={16} /></button>
+              <button className="p-2 hover:bg-slate-100 rounded-full transition-colors" title="שתף"><ExternalLink size={16} /></button>
             </div>
           </footer>
         </div>
