@@ -27,7 +27,8 @@ import {
   Server,
   ShieldCheck,
   ArrowRightLeft,
-  Handshake
+  Handshake,
+  Activity
 } from 'lucide-react';
 import { 
   BarChart as ReBarChart, 
@@ -319,7 +320,7 @@ const Methodology = () => (
 
 const Results = () => (
   <div className="space-y-8">
-    <AcademicCard title="3. ממצאים וניתוח נתונים" icon={BarChart}>
+    <AcademicCard title="3. ממצאים וניתוח ננתונים" icon={BarChart}>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
           <div className="h-[400px] w-full mt-4">
@@ -375,57 +376,84 @@ const Discussion = () => (
       <div className="prose prose-indigo max-w-none text-slate-600 text-lg space-y-12">
         
         {/* WOW Effect Section */}
-        <section className="bg-slate-50 p-8 rounded-[2rem] border border-slate-200 relative overflow-hidden">
-          <Sparkles className="absolute -top-4 -left-4 text-indigo-100" size={120} />
+        <section className="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-200 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-32 h-32 bg-indigo-100/50 rounded-full -translate-x-16 -translate-y-16"></div>
+          <Sparkles className="absolute -top-4 -left-4 text-indigo-200 opacity-30" size={140} />
           <div className="relative z-10">
-            <h4 className="text-2xl font-black text-slate-800 mb-4 flex items-center gap-3">
-              <div className="bg-indigo-600 p-2 rounded-lg text-white shadow-md">
-                <Sparkles size={20} />
+            <h4 className="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
+              <div className="bg-indigo-600 p-2.5 rounded-xl text-white shadow-lg">
+                <Sparkles size={24} />
               </div>
               אפקט ה-WOW והתועלת השולית הפוחתת
             </h4>
-            <p className="text-slate-600 leading-relaxed font-medium">
-              החוויה האישית שלי בבנייה ב-Vibe Coding מתחילה תמיד באפקט "WOW" מסחרר באיטרציה הראשונה. תוך דקות, רעיון מופשט הופך למשהו שאפשר להקליק עליו. 
-              אבל, ככל שצוללים לפרטים הקטנים, ל-Edge Cases ולפיצ'רים המורכבים - התועלת השולית של ה-Vibe פוחתת. האינטראקציה הופכת מ"קסם" לעבודת נמלים של דיוק, שם נדרשת המתודולוגיה האיטרטיבית (שיטה D) כדי לא ללכת לאיבוד.
-            </p>
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              <div className="flex-1">
+                <p className="text-slate-600 leading-relaxed font-medium">
+                  החוויה האישית שלי בבנייה ב-Vibe Coding מתחילה תמיד באפקט "WOW" מסחרר. האיטרציה הראשונה מרגישה כמו קסם טהור: תוך דקות ספורות, רעיון מופשט הופך למשהו שאפשר להקליק עליו, להציג לבעלי עניין ולקבל פידבק מיידי.
+                </p>
+                <p className="text-slate-600 leading-relaxed font-medium mt-4">
+                  אך כאן מסתתר המלכוד: <span className="text-indigo-600 font-bold">התועלת השולית פוחתת במהירות.</span> ככל שצוללים לפרטים הקטנים, ל-Edge Cases, וליציבות הלוגית - האינטראקציה הופכת מ"קסם" לעבודת נמלים של דיוק פרומפטים. שם בדיוק נדרשת המתודולוגיה האיטרטיבית (שיטה D) כדי לא ללכת לאיבוד בתוך ה"Vibe".
+                </p>
+              </div>
+              <div className="w-full md:w-64 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm shrink-0 flex flex-col items-center">
+                <Activity className="text-rose-500 mb-2" />
+                <div className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">גרף התועלת</div>
+                <div className="w-full h-32 flex items-end gap-2 px-2">
+                  <div className="flex-1 bg-indigo-600 rounded-t-lg h-full relative group">
+                    <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-indigo-600">WOW</span>
+                  </div>
+                  <div className="flex-1 bg-indigo-400 rounded-t-lg h-2/3"></div>
+                  <div className="flex-1 bg-indigo-200 rounded-t-lg h-1/3"></div>
+                  <div className="flex-1 bg-slate-200 rounded-t-lg h-1/4"></div>
+                </div>
+                <div className="mt-4 text-[10px] font-bold text-slate-400">זמן/איטרציות →</div>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Practical Challenges Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Practical Implementation & Delivery */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          <div className="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-            <Handshake className="text-indigo-500 mb-4" size={32} />
-            <h5 className="font-black text-slate-800 mb-2">מסירת המערכת (Handoff)</h5>
-            <p className="text-sm text-slate-500">
-              האתגר הוא לא רק לבנות, אלא "להעביר את המפתח". איך מבטיחים שהלקוח או צוות הפיתוח יוכלו לתחזק קוד שנוצר ע"י AI? הפתרון הוא תיעוד ה-Prompts כחלק מה-Source Code.
+          <div className="p-8 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all border-b-4 border-b-indigo-500 group">
+            <div className="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Handshake className="text-indigo-600" size={32} />
+            </div>
+            <h5 className="font-black text-xl text-slate-800 mb-4">מסירת המערכת (Handoff)</h5>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              תהליך המסירה ללקוח (או לצוות הפיתוח) משתנה מהותית. במקום מסמך PDF, אנחנו מוסרים <span className="font-bold italic">Prompt Chain</span> וקוד עובד. האתגר המרכזי הוא להבטיח שהלקוח יוכל להמשיך לתחזק את ה"Vibe" מבלי לשבור את המערכת. התיעוד הופך להיות חלק אינטגרלי מהפרומפט עצמו.
             </p>
           </div>
 
-          <div className="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-            <ArrowRightLeft className="text-blue-500 mb-4" size={32} />
-            <h5 className="font-black text-slate-800 mb-2">מעבר בין סביבות</h5>
-            <p className="text-sm text-slate-500">
-              קל לבנות ב-Localhost, קשה להעביר ל-Production ממשלתי. האתגר הוא התאמת התוצר לתשתיות קיימות, ניהול Secrets והגדרת CI/CD שתומך בתוצרי AI.
+          <div className="p-8 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all border-b-4 border-b-blue-500 group">
+            <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <ArrowRightLeft className="text-blue-600" size={32} />
+            </div>
+            <h5 className="font-black text-xl text-slate-800 mb-4">מעבר בין סביבות</h5>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              בעולם הממשלתי, "מעבר סביבה" הוא אירוע דרמטי. בעוד שב-Localhost הכל עובד, המעבר ל-Dev, Staging ו-Production דורש ניהול Secrets, הגדרות Environment משתנות והתאמה לתשתיות הענן הארגוניות. ה-Vibe Coding חייב להיות מותאם ל-Standard CI/CD כדי לשרוד את המעבר הזה.
             </p>
           </div>
 
-          <div className="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-            <ShieldCheck className="text-rose-500 mb-4" size={32} />
-            <h5 className="font-black text-slate-800 mb-2">אבטחת מידע (InfoSec)</h5>
-            <p className="text-sm text-slate-500">
-              הפיל שבחדר. קוד שנוצר במהירות עלול להכיל חולשות. נדרש תהליך "ניקוי" (Sanitization) ובדיקות חדירות לפני שכל תוצר Vibe עולה לאוויר במערכת קריטית.
+          <div className="p-8 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all border-b-4 border-b-rose-500 group">
+            <div className="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <ShieldCheck className="text-rose-600" size={32} />
+            </div>
+            <h5 className="font-black text-xl text-slate-800 mb-4">אבטחת מידע (InfoSec)</h5>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              הפיל שבחדר. קוד שנוצר במהירות עלול להכיל חולשות אבטחה בסיסיות. נדרש תהליך "ניקוי" (Sanitization) ובדיקות חדירות לפני שכל תוצר Vibe עולה לאוויר במערכת קריטית. מנהל המוצר החדש חייב להבין את עקרונות ה-OWASP כדי להנחות את המודל לבנייה מאובטחת.
             </p>
           </div>
 
         </div>
 
-        <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-xl">
-          <h4 className="text-white font-black mb-4 flex items-center gap-2 italic">
-            <Zap className="text-yellow-400" /> הפאנץ' ליין המחקרי:
+        <div className="bg-slate-900 text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
+          <div className="absolute bottom-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
+          <h4 className="text-white font-black text-2xl mb-6 flex items-center gap-3 italic">
+            <Zap className="text-yellow-400" /> סיכום פרק הדיון:
           </h4>
-          <p className="text-xl font-light leading-relaxed">
-            ה-PM יכול להיות "צוות של אדם אחד" בשלב ההקמה (0 ל-1), אך הוא חייב "צוות של מומחים" בשלב ההפעלה והסקייל (1 ל-Infinity) כדי לצלוח את אתגרי האבטחה והתחזוקה.
+          <p className="text-2xl font-light leading-relaxed">
+            ה-PM יכול להיות "צוות של אדם אחד" בשלב ההקמה (0 ל-1), אך הוא חייב "צוות של מומחים" (אבטחה, DevOps, פיתוח) בשלב ההפעלה והסקייל (1 ל-Infinity). ה-Vibe הוא המנוע, אך המקצוענות הארגונית היא ההגה.
           </p>
         </div>
       </div>
@@ -437,9 +465,9 @@ const Discussion = () => (
           <ShieldAlert className="text-rose-500" /> מגבלות המודל (Constraints)
         </h4>
         <ul className="space-y-3 text-slate-500">
-          <li className="flex gap-2"><span>•</span> אבטחת מידע ופרטיות בממשלה</li>
-          <li className="flex gap-2"><span>•</span> תחזוקה ארוכת טווח (Maintenance)</li>
-          <li className="flex gap-2"><span>•</span> אינטגרציות מורכבות</li>
+          <li className="flex gap-2"><span>•</span> אבטחת מידע ופרטיות במערכות ליבה</li>
+          <li className="flex gap-2"><span>•</span> תחזוקה ארוכת טווח (Technical Debt vs AI Debt)</li>
+          <li className="flex gap-2"><span>•</span> אינטגרציות למערכות Legacy מורכבות</li>
         </ul>
       </div>
       <SectionPlaceholder title="דיון על אתיקה ו-Bias ב-AI" />
@@ -454,15 +482,15 @@ const Conclusion = () => (
         <p>
           המלצת המחקר למנהלי מוצר בממשלה: אל תחליפו את הצוות, אלא <strong>הקדימו</strong> אותו.
         </p>
-        <p className="p-6 border-r-4 border-indigo-500 bg-indigo-50 italic">
-          "הביאו גרסה עובדת, ותנו לצוות הפיתוח להפוך אותה למוצר ממשלתי אמין."
+        <p className="p-8 border-r-8 border-indigo-500 bg-indigo-50 italic rounded-2xl">
+          "השתמשו ב-Vibe Coding כדי להביא גרסה עובדת ומבוססת פידבק מהשטח, ותנו לצוות הפיתוח המיומן להפוך אותה למוצר ממשלתי אמין, מאובטח ובר-קיימא."
         </p>
       </div>
       <div className="mt-12 flex flex-wrap gap-4">
-        <button className="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100">
+        <button className="bg-indigo-600 text-white px-8 py-3 rounded-2xl font-bold flex items-center gap-2 hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-100 group">
           <FileText size={20} /> הורד את המאמר המלא (PDF)
         </button>
-        <button className="border border-slate-200 text-slate-600 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 transition-all">
+        <button className="border-2 border-slate-200 text-slate-600 px-8 py-3 rounded-2xl font-bold hover:bg-slate-50 transition-all">
           ביבליוגרפיה ונספחים
         </button>
       </div>
@@ -556,7 +584,7 @@ const App: React.FC = () => {
           <footer className="mt-20 pt-8 border-t border-slate-200 flex justify-between items-center text-slate-400 text-xs font-bold">
             <div className="flex items-center gap-4">
               <span className="font-mono bg-slate-100 px-2 py-1 rounded">Page 0{navigation.findIndex(t => t.id === activeTab) + 1}</span>
-              <span className="hidden md:inline italic opacity-50">Draft v1.5 // March 2025</span>
+              <span className="hidden md:inline italic opacity-50">Draft v1.6 // March 2025</span>
             </div>
             <div className="flex gap-4">
               <button className="p-2 hover:bg-slate-100 rounded-full transition-colors" title="ערוך"><Edit3 size={16} /></button>
