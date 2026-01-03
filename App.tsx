@@ -44,45 +44,41 @@ const researchResults = [
 const toolsLandscape = [
   // Top-Left (High Ability / Less Technical)
   { name: 'Base 44', x: 28, y: 78, color: 'bg-orange-500', highlighted: true },
-  { name: 'Google AI Studio', x: 25, y: 68, color: 'bg-slate-900', highlighted: true },
-  { name: 'emergent', x: 45, y: 88, color: 'bg-slate-800' },
-  { name: 'Mocha', x: 35, y: 75, color: 'bg-slate-900' },
-  { name: 'Dyad', x: 38, y: 70, color: 'bg-purple-600' },
-  { name: 'Lovable', x: 48, y: 75, color: 'bg-rose-500' },
-  { name: 'bolt.new', x: 53, y: 68, color: 'bg-slate-900' },
+  { name: 'Google AI Studio', x: 22, y: 68, color: 'bg-slate-900', highlighted: true },
+  { name: 'emergent', x: 45, y: 88, color: 'bg-slate-800 text-white' },
+  { name: 'Mocha', x: 35, y: 75, color: 'bg-white text-slate-800 border border-slate-200' },
+  { name: 'Dyad', x: 38, y: 70, color: 'bg-white text-purple-600 border border-slate-100' },
+  { name: 'Lovable', x: 48, y: 75, color: 'bg-white text-slate-900 border border-slate-100 font-bold' },
   
   // Top-Right (High Ability / More Technical)
-  { name: 'replit', x: 57, y: 85, color: 'bg-red-600' },
-  { name: 'CURSOR', x: 70, y: 88, color: 'bg-slate-900' },
-  { name: 'Claude', x: 85, y: 92, color: 'bg-orange-600' },
-  { name: 'Codex', x: 82, y: 85, color: 'bg-slate-900' },
-  { name: 'Rork', x: 62, y: 75, color: 'bg-slate-900' },
+  { name: 'replit', x: 57, y: 88, color: 'bg-white text-slate-900 border border-slate-100' },
+  { name: 'CURSOR', x: 72, y: 92, color: 'bg-white text-slate-900 border border-slate-100' },
+  { name: 'Claude', x: 88, y: 92, color: 'bg-white text-orange-600 border border-slate-100' },
+  { name: 'Codex', x: 85, y: 85, color: 'bg-white text-slate-900 border border-slate-100' },
+  { name: 'bolt.new', x: 53, y: 70, color: 'bg-slate-900 text-white' },
+  { name: 'Rork', x: 65, y: 75, color: 'bg-slate-900 text-white' },
 
   // Bottom-Left (Lower Ability / Less Technical)
-  { name: 'new.website', x: 18, y: 25, color: 'bg-slate-100 text-slate-900 border border-slate-200' },
-  { name: 'Figma Make', x: 28, y: 18, color: 'bg-slate-100 text-slate-900 border border-slate-200' },
-  { name: 'UX PILOT', x: 24, y: 10, color: 'bg-indigo-600' },
+  { name: 'new.website', x: 18, y: 25, color: 'bg-white text-slate-900 border border-slate-200' },
+  { name: 'Figma Make', x: 28, y: 18, color: 'bg-white text-slate-900 border border-slate-200' },
+  { name: 'UX PILOT', x: 25, y: 10, color: 'bg-white text-blue-600 border border-slate-100' },
 ];
 
 // --- Sub-components ---
 
 const ToolQuadrant = () => (
-  <div className="relative w-full aspect-square md:aspect-video bg-white border border-slate-200 rounded-3xl overflow-visible mt-12 mb-8 shadow-inner">
-    {/* Solid Axis Lines to match image exactly */}
+  <div className="relative w-full aspect-square md:aspect-video bg-[#fdfdfd] border border-slate-100 rounded-3xl overflow-visible mt-16 mb-16 shadow-sm mx-auto max-w-4xl">
+    {/* Solid Axis Lines */}
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="w-[2px] h-[110%] bg-slate-800 absolute"></div>
-      <div className="h-[2px] w-[110%] bg-slate-800 absolute"></div>
+      <div className="w-[1px] h-[100%] bg-slate-900 absolute opacity-80"></div>
+      <div className="h-[1px] w-[100%] bg-slate-900 absolute opacity-80"></div>
     </div>
 
-    {/* Axis End Labels */}
-    <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-black text-slate-900 text-sm md:text-lg">High Ability/Power</div>
-    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 font-black text-slate-900 text-sm md:text-lg">Lower Ability/Power</div>
-    <div className="absolute top-1/2 -left-32 md:-left-40 -translate-y-1/2 font-black text-slate-900 text-sm md:text-lg">Less technical</div>
-    <div className="absolute top-1/2 -right-32 md:-right-40 translate-y-1/2 font-black text-slate-900 text-sm md:text-lg">More technical</div>
-
-    {/* Small arrows on axes */}
-    <div className="absolute -top-[5%] left-1/2 -translate-x-1/2 border-l-8 border-r-8 border-b-8 border-transparent border-b-slate-800"></div>
-    <div className="absolute top-1/2 -right-[5%] -translate-y-1/2 border-t-8 border-b-8 border-l-8 border-transparent border-l-slate-800"></div>
+    {/* Axis End Labels - Positioned exactly as in the image */}
+    <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-black text-slate-900 text-lg md:text-xl whitespace-nowrap">High Ability/Power</div>
+    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 font-black text-slate-900 text-lg md:text-xl whitespace-nowrap">Lower Ability/Power</div>
+    <div className="absolute top-1/2 -left-4 md:-left-8 -translate-x-full -translate-y-1/2 font-black text-slate-900 text-lg md:text-xl whitespace-nowrap">Less technical</div>
+    <div className="absolute top-1/2 -right-4 md:-right-8 translate-x-full -translate-y-1/2 font-black text-slate-900 text-lg md:text-xl whitespace-nowrap">More technical</div>
 
     {/* Tools */}
     {toolsLandscape.map((tool, idx) => (
@@ -90,15 +86,15 @@ const ToolQuadrant = () => (
         key={idx}
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: idx * 0.05 }}
-        className={`absolute px-3 py-1.5 rounded-lg text-[10px] md:text-sm font-black shadow-md flex items-center gap-2 cursor-default hover:scale-110 transition-transform ${tool.color.includes('text') ? tool.color : tool.color + ' text-white'} ${tool.highlighted ? 'ring-4 ring-yellow-400 ring-offset-2 z-20 scale-110' : 'z-10'}`}
+        transition={{ delay: idx * 0.03 }}
+        className={`absolute px-2.5 py-1.5 rounded shadow-sm text-[10px] md:text-xs font-black flex items-center gap-1.5 cursor-default hover:scale-110 transition-transform ${tool.color} ${tool.highlighted ? 'ring-2 ring-yellow-400 ring-offset-2 z-20 scale-110' : 'z-10'}`}
         style={{ 
           left: `${tool.x}%`, 
           bottom: `${tool.y}%`,
           transform: 'translate(-50%, 50%)'
         }}
       >
-        {tool.highlighted && <Zap size={14} className="text-yellow-400 fill-current" />}
+        {tool.highlighted && <Zap size={12} className="text-yellow-400 fill-current" />}
         {tool.name}
       </motion.div>
     ))}
@@ -197,7 +193,7 @@ const Methodology = () => (
             id: 'D', 
             title: 'The Iterative', 
             subtitle: 'טעינה הדרגתית (D)', 
-            desc: 'בניית הליבה תחילה ושיפור איטרטיבי (Winner).',
+            desc: 'בנייית הליבה תחילה ושיפור איטרטיבי (Winner).',
             winner: true,
             color: 'bg-indigo-600 text-white shadow-xl shadow-indigo-100'
           },
@@ -220,15 +216,15 @@ const Methodology = () => (
     </AcademicCard>
 
     <AcademicCard title="2.1 בחירת כלי: מפת ה-Vibe Coding" icon={Wrench}>
-      <p className="text-lg text-slate-600 mb-4">
-        מיפוי האקו-סיסטם הנוכחי של כלי ה-AI לפיתוח. המחקר מציג את הכלים על מטריצת "יכולת מול מומחיות", תוך שימת דגש על הכלים שאיפשרו ל-PM את רמת ה-Autonomy הגבוהה ביותר.
+      <p className="text-lg text-slate-600 mb-8">
+        מיפוי האקו-סיסטם הנוכחי של כלי ה-AI לפיתוח. המפה מציגה את הצירים המרכזיים המשפיעים על בחירת הכלי: רמת המומחיות הטכנית הנדרשת מול עוצמת היכולת והיציבות שהכלי מספק.
       </p>
       
-      <div className="p-12 md:p-16 bg-slate-50 border border-slate-100 rounded-[3rem] overflow-visible">
+      <div className="px-12 md:px-24 py-12 bg-slate-50/50 border border-slate-100 rounded-[3rem]">
         <ToolQuadrant />
         
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 ring-2 ring-orange-50 relative overflow-hidden">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 ring-2 ring-orange-100 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-orange-500/5 blur-3xl rounded-full"></div>
             <div className="flex items-center gap-3 mb-4">
               <div className="bg-orange-500 p-2 rounded-xl shadow-md">
@@ -236,8 +232,8 @@ const Methodology = () => (
               </div>
               <h5 className="font-black text-2xl text-slate-900">Base 44</h5>
             </div>
-            <p className="text-slate-600 leading-relaxed">
-              נבחר ככלי ה-High Ability הנגיש ביותר למנהלי מוצר. הוא מאפשר יצירת אפליקציות שלמות מתוך פרומפט ודרישות PRD, וממוקם ב-Sweet Spot של קלות שימוש מול עוצמה.
+            <p className="text-slate-600 leading-relaxed font-medium">
+              נבחר ככלי ה-High Ability המרכזי. הוא מאפשר ל-PM לעבור משלב הפרומפט לשלב האפליקציה העובדת (MVP) תוך שמירה על שליטה גבוהה בארכיטקטורה.
             </p>
           </div>
           <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 ring-2 ring-slate-100 relative overflow-hidden">
@@ -248,8 +244,8 @@ const Methodology = () => (
               </div>
               <h5 className="font-black text-2xl text-slate-900">Google AI Studio</h5>
             </div>
-            <p className="text-slate-600 leading-relaxed">
-              שימש כמעבדת המחקר לבחינת מודלי ה-Gemini. הכלי סיפק את הגמישות המקסימלית לבחינת לוגיקות מוצריות מורכבות לפני המעבר לכלי ה-Automation.
+            <p className="text-slate-600 leading-relaxed font-medium">
+              המעבדה המרכזית לבחינת לוגיקות. הכלי מספק את הגישה הישירה והמהירה ביותר ליכולות הליבה של Gemini, ומאפשר זיקוק של ה-Core Value לפני בניית ה-UI.
             </p>
           </div>
         </div>
@@ -431,7 +427,7 @@ const App: React.FC = () => {
           <footer className="mt-20 pt-8 border-t border-slate-200 flex justify-between items-center text-slate-400 text-xs font-bold">
             <div className="flex items-center gap-4">
               <span className="font-mono bg-slate-100 px-2 py-1 rounded">Page 0{navigation.findIndex(t => t.id === activeTab) + 1}</span>
-              <span className="hidden md:inline italic opacity-50">Draft v1.4 // March 2025</span>
+              <span className="hidden md:inline italic opacity-50">Draft v1.5 // March 2025</span>
             </div>
             <div className="flex gap-4">
               <button className="p-2 hover:bg-slate-100 rounded-full transition-colors" title="ערוך"><Edit3 size={16} /></button>
