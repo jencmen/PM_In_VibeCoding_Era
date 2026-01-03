@@ -195,8 +195,8 @@ const Discussion = () => (
     <AcademicCard title="4. דיון: תובנות מהשטח וחוויה אישית" icon={Lightbulb}>
       <div className="prose prose-indigo max-w-none text-slate-600 text-lg space-y-12">
         
-        {/* New Personal Experience Sub-chapter */}
-        <section className="bg-indigo-50/50 p-10 rounded-[2.5rem] border border-indigo-100 relative overflow-hidden">
+        {/* Sub-chapter: Personal Experience */}
+        <section className="bg-indigo-50/50 p-10 rounded-[2.5rem] border border-indigo-100 relative overflow-hidden shadow-inner">
           <div className="absolute top-4 left-4 opacity-10">
             <User size={120} className="text-indigo-600" />
           </div>
