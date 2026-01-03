@@ -18,7 +18,11 @@ import {
   ExternalLink,
   Edit3,
   Award,
-  Wrench
+  Wrench,
+  Layout,
+  Layers,
+  Sparkles,
+  MousePointer2
 } from 'lucide-react';
 import { 
   BarChart as ReBarChart, 
@@ -105,6 +109,94 @@ const AcademicCard = ({ children, title, icon: Icon }: { children?: React.ReactN
     {children}
   </div>
 );
+
+const ScreenshotMock = ({ method }: { method: 'A' | 'B' | 'C' | 'D' }) => {
+  const configs = {
+    A: {
+      title: "תוצר A: דרישות בלבד",
+      color: "bg-slate-50",
+      content: (
+        <div className="p-4 space-y-2 opacity-60">
+          <div className="h-4 w-3/4 bg-slate-300 rounded"></div>
+          <div className="h-4 w-full bg-slate-200 rounded"></div>
+          <div className="h-20 w-full bg-slate-100 border border-dashed border-slate-300 rounded flex items-center justify-center text-[10px] text-slate-400">Placeholder for auto-generated UI</div>
+        </div>
+      )
+    },
+    B: {
+      title: "תוצר B: PRD מלא + עיצוב",
+      color: "bg-blue-50",
+      content: (
+        <div className="p-4 space-y-4">
+          <div className="flex justify-between items-center">
+            <div className="h-6 w-1/3 bg-blue-300 rounded"></div>
+            <div className="h-8 w-8 bg-blue-500 rounded-full"></div>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="h-16 bg-white border border-blue-200 rounded shadow-sm"></div>
+            <div className="h-16 bg-white border border-blue-200 rounded shadow-sm"></div>
+          </div>
+          <div className="h-10 w-full bg-blue-600 rounded"></div>
+        </div>
+      )
+    },
+    C: {
+      title: "תוצר C: Vibe Only",
+      color: "bg-purple-50",
+      content: (
+        <div className="p-4 flex flex-col items-center justify-center h-full space-y-4">
+          <Sparkles className="text-purple-500 animate-pulse" size={32} />
+          <div className="h-12 w-12 bg-purple-500 rounded-full flex items-center justify-center shadow-lg shadow-purple-200">
+            <MousePointer2 className="text-white" size={16} />
+          </div>
+          <div className="h-4 w-1/2 bg-purple-200 rounded-full"></div>
+        </div>
+      )
+    },
+    D: {
+      title: "תוצר D: איטרטיבי (הגרסה הסופית)",
+      color: "bg-indigo-50",
+      content: (
+        <div className="p-4 space-y-3">
+          <div className="flex gap-2">
+            <div className="h-3 w-8 bg-indigo-200 rounded"></div>
+            <div className="h-3 w-8 bg-indigo-200 rounded"></div>
+            <div className="h-3 w-8 bg-indigo-400 rounded"></div>
+          </div>
+          <div className="h-24 bg-white border border-indigo-200 rounded-xl p-2 flex gap-2">
+             <div className="w-1/4 h-full bg-slate-50 rounded"></div>
+             <div className="flex-1 space-y-2">
+                <div className="h-3 w-3/4 bg-slate-200 rounded"></div>
+                <div className="h-12 w-full bg-indigo-50 rounded border border-indigo-100"></div>
+             </div>
+          </div>
+          <div className="h-8 w-full bg-indigo-600 rounded-lg shadow-md flex items-center justify-center text-[10px] text-white font-bold">Launch MVP</div>
+        </div>
+      )
+    }
+  };
+
+  const config = configs[method];
+
+  return (
+    <div className="flex flex-col space-y-2">
+      <div className="text-xs font-bold text-slate-500 mr-2">{config.title}</div>
+      <div className={`aspect-video rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-zoom-in ${config.color}`}>
+        <div className="h-4 bg-white border-b border-slate-100 flex items-center px-2 gap-1">
+          <div className="w-1.5 h-1.5 rounded-full bg-slate-200"></div>
+          <div className="w-1.5 h-1.5 rounded-full bg-slate-200"></div>
+          <div className="w-1.5 h-1.5 rounded-full bg-slate-200"></div>
+        </div>
+        <div className="h-full relative">
+          {config.content}
+          <div className="absolute inset-0 bg-indigo-600/0 group-hover:bg-indigo-600/5 transition-colors flex items-center justify-center">
+             <Search className="text-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity" size={20} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 // --- Sections ---
 
@@ -223,28 +315,50 @@ const Methodology = () => (
 const Results = () => (
   <div className="space-y-8">
     <AcademicCard title="3. ממצאים וניתוח נתונים" icon={BarChart}>
-      <div className="h-[400px] w-full mt-4">
-        <ResponsiveContainer width="100%" height="100%">
-          <ReBarChart data={researchResults} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-            <XAxis dataKey="method" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontWeight: 'bold'}} />
-            <YAxis axisLine={false} tickLine={false} />
-            <RechartsTooltip 
-              contentStyle={{ borderRadius: '1.5rem', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', direction: 'rtl' }}
-            />
-            <Legend verticalAlign="top" height={36}/>
-            <Bar dataKey="stability" name="מדד יציבות" fill="#6366f1" radius={[6, 6, 0, 0]} />
-            <Bar dataKey="speed" name="מהירות פיתוח" fill="#cbd5e1" radius={[6, 6, 0, 0]} />
-          </ReBarChart>
-        </ResponsiveContainer>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
+          <div className="h-[400px] w-full mt-4">
+            <ResponsiveContainer width="100%" height="100%">
+              <ReBarChart data={researchResults} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                <XAxis dataKey="method" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontWeight: 'bold'}} />
+                <YAxis axisLine={false} tickLine={false} />
+                <RechartsTooltip 
+                  contentStyle={{ borderRadius: '1.5rem', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', direction: 'rtl' }}
+                />
+                <Legend verticalAlign="top" height={36}/>
+                <Bar dataKey="stability" name="מדד יציבות" fill="#6366f1" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="speed" name="מהירות פיתוח" fill="#cbd5e1" radius={[6, 6, 0, 0]} />
+              </ReBarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center">
+           <div className="p-6 bg-indigo-50 border border-indigo-100 rounded-2xl shadow-sm">
+            <h4 className="font-bold text-indigo-900 mb-2 flex items-center gap-2">
+              <TrendingUp size={20} /> תובנה מרכזית:
+            </h4>
+            <p className="text-indigo-800 leading-relaxed">
+              נמצא קשר ישיר בין רמת הפירוט ה"ארכיטקטונית" (שיטה B ו-D) לבין יציבות הקוד. בניגוד למיתוס, ה-Vibe לבדו (שיטה C) אינו מספיק לייצור מוצר אמין לארגון גדול.
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="mt-8 p-6 bg-indigo-50 border border-indigo-100 rounded-2xl">
-        <h4 className="font-bold text-indigo-900 mb-2 flex items-center gap-2">
-          <TrendingUp size={20} /> תובנה מרכזית:
-        </h4>
-        <p className="text-indigo-800 text-lg">
-          נמצא קשר ישיר בין רמת הפירוט ה"ארכיטקטונית" (שיטה B ו-D) לבין יציבות הקוד. בניגוד למיתוס, ה-Vibe לבדו (שיטה C) אינו מספיק לייצור מוצר אמין.
-        </p>
+    </AcademicCard>
+
+    <AcademicCard title="3.1 השוואה ויזואלית: תוצרי המודלים" icon={Layout}>
+      <p className="text-lg text-slate-600 mb-8">
+        בחינת ה"אסתטיקה" והפונקציונליות של התוצרים בהתאם למתודולוגיה שנבחרה:
+      </p>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <ScreenshotMock method="A" />
+        <ScreenshotMock method="B" />
+        <ScreenshotMock method="C" />
+        <ScreenshotMock method="D" />
+      </div>
+      <div className="mt-8 flex items-center gap-2 text-slate-400 text-sm italic">
+        <Info size={14} />
+        <span>התמונות לעיל הן הדמיות של מבנה המערכת שנוצר בכל אחת מהשיטות (Mockups)</span>
       </div>
     </AcademicCard>
   </div>
@@ -393,7 +507,7 @@ const App: React.FC = () => {
           <footer className="mt-20 pt-8 border-t border-slate-200 flex justify-between items-center text-slate-400 text-xs font-bold">
             <div className="flex items-center gap-4">
               <span className="font-mono bg-slate-100 px-2 py-1 rounded">Page 0{navigation.findIndex(t => t.id === activeTab) + 1}</span>
-              <span className="hidden md:inline italic opacity-50">Draft v1.3 // March 2025</span>
+              <span className="hidden md:inline italic opacity-50">Draft v1.4 // March 2025</span>
             </div>
             <div className="flex gap-4">
               <button className="p-2 hover:bg-slate-100 rounded-full transition-colors" title="ערוך"><Edit3 size={16} /></button>
