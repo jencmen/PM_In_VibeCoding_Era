@@ -41,10 +41,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Data ---
 const researchResults = [
-  { method: 'The Documenter', stability: 3.5, speed: 2 },
-  { method: 'The Architect', stability: 4.8, speed: 4 },
-  { method: 'The Vibe Coder', stability: 2.0, speed: 5 },
-  { method: 'The Iterative', stability: 4.5, speed: 4.2 },
+  { method: 'A: The Documenter', stability: 3.5, speed: 2 },
+  { method: 'B: The Architect', stability: 4.8, speed: 4 },
+  { method: 'C: The Vibe Coder', stability: 2.0, speed: 5 },
+  { method: 'D: The Iterative', stability: 4.5, speed: 4.2 },
 ];
 
 const methodologyData = [
@@ -159,17 +159,17 @@ const AcademicCard = ({ children, title, icon: Icon }: { children?: React.ReactN
 
 const ScreenshotMock = ({ method }: { method: 'A' | 'B' | 'C' | 'D' }) => {
   const configs = {
-    A: { title: "The Documenter (דרישות בלבד)", color: "bg-slate-50", content: <div className="p-4 space-y-2 opacity-60"><div className="h-4 w-3/4 bg-slate-300 rounded"></div><div className="h-4 w-full bg-slate-200 rounded"></div></div> },
-    B: { title: "The Architect (PRD מלא)", color: "bg-blue-50", content: <div className="p-4 space-y-4"><div className="h-6 w-1/3 bg-blue-300 rounded"></div><div className="h-10 w-full bg-blue-600 rounded"></div></div> },
-    C: { title: "The Vibe Coder (Vibe Only)", color: "bg-purple-50", content: <div className="p-4 flex flex-col items-center justify-center h-full"><Sparkles className="text-purple-500 animate-pulse" size={32} /></div> },
-    D: { title: "The Iterative (איטרטיבי)", color: "bg-indigo-50", content: <div className="p-4 space-y-3"><div className="h-24 bg-white border border-indigo-200 rounded-xl p-2 flex gap-2"><div className="w-1/4 h-full bg-slate-50 rounded"></div><div className="flex-1 space-y-2"><div className="h-3 w-3/4 bg-slate-200 rounded"></div><div className="h-12 w-full bg-indigo-50 rounded"></div></div></div></div> }
+    A: { title: "תוצר A: The Documenter", color: "bg-slate-50", content: <div className="p-4 space-y-2 opacity-60"><div className="h-4 w-3/4 bg-slate-300 rounded"></div><div className="h-4 w-full bg-slate-200 rounded"></div></div> },
+    B: { title: "תוצר B: The Architect", color: "bg-blue-50", content: <div className="p-4 space-y-4"><div className="h-6 w-1/3 bg-blue-300 rounded"></div><div className="h-10 w-full bg-blue-600 rounded"></div></div> },
+    C: { title: "תוצר C: The Vibe Coder", color: "bg-purple-50", content: <div className="p-4 flex flex-col items-center justify-center h-full"><Sparkles className="text-purple-500 animate-pulse" size={32} /></div> },
+    D: { title: "תוצר D: The Iterative", color: "bg-indigo-50", content: <div className="p-4 space-y-3"><div className="h-24 bg-white border border-indigo-200 rounded-xl p-2 flex gap-2"><div className="w-1/4 h-full bg-slate-50 rounded"></div><div className="flex-1 space-y-2"><div className="h-3 w-3/4 bg-slate-200 rounded"></div><div className="h-12 w-full bg-indigo-50 rounded"></div></div></div></div> }
   };
   const config = configs[method];
   return (
-    <div className="flex flex-col space-y-2 mb-6">
-      <div className="text-sm font-black text-indigo-600 bg-indigo-50 w-fit px-3 py-1 rounded-full">{config.title}</div>
-      <div className={`aspect-video rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow group ${config.color}`}>
-        <div className="h-6 bg-white border-b border-slate-100 flex items-center px-3 gap-1.5"><div className="w-2 h-2 rounded-full bg-rose-300"></div><div className="w-2 h-2 rounded-full bg-yellow-300"></div><div className="w-2 h-2 rounded-full bg-green-300"></div></div>
+    <div className="flex flex-col space-y-2">
+      <div className="text-xs font-bold text-slate-500 mr-2">{config.title}</div>
+      <div className={`aspect-video rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow group ${config.color}`}>
+        <div className="h-4 bg-white border-b border-slate-100 flex items-center px-2 gap-1"><div className="w-1.5 h-1.5 rounded-full bg-slate-200"></div><div className="w-1.5 h-1.5 rounded-full bg-slate-200"></div></div>
         <div className="h-full relative">{config.content}</div>
       </div>
     </div>
@@ -193,7 +193,6 @@ const Introduction = () => (
   <AcademicCard title="1. מבוא (Introduction)" icon={BookOpen}>
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
       <div className="prose prose-slate text-lg text-slate-600 space-y-8">
-        {/* Inspirational Quote */}
         <div className="bg-indigo-50 p-8 border-r-8 border-indigo-600 rounded-l-3xl shadow-sm italic relative">
           <Quote className="absolute -top-3 -right-3 text-indigo-200" size={32} />
           <p className="text-indigo-900 font-bold text-xl mb-2">"The best way to predict the future is to create it."</p>
@@ -204,7 +203,6 @@ const Introduction = () => (
           בעידן ה-AI, מנהל המוצר הופך ממי שרק <strong>מתאר</strong> את המוצר למי שבאופן אקטיבי <strong>בורא</strong> אותו. זהו מעבר דרמטי מניהול תהליכים לניהול תוצרים.
         </p>
         
-        {/* Breaking the Handoff Wall Explanation */}
         <div className="bg-slate-900 text-white p-6 rounded-2xl shadow-lg border border-slate-800">
           <h4 className="flex items-center gap-2 text-indigo-400 font-black mb-3">
             <Zap size={20} /> שבירת חומת ה-Handoff
@@ -329,23 +327,23 @@ const Methodology = () => (
 const Results = () => (
   <div className="space-y-12">
     <AcademicCard title="3. ממצאים (Results)" icon={BarChart}>
-      <div className="h-[450px] w-full mt-4">
+      <div className="h-[400px] w-full mt-4">
         <ResponsiveContainer width="100%" height="100%">
-          <ReBarChart data={researchResults} layout="vertical" margin={{ left: 40, right: 40 }}>
-            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
-            <XAxis type="number" axisLine={false} tickLine={false} />
-            <YAxis dataKey="method" type="category" axisLine={false} tickLine={false} width={120} style={{ fontWeight: 700, fill: '#475569' }} />
+          <ReBarChart data={researchResults}>
+            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+            <XAxis dataKey="method" axisLine={false} tickLine={false} />
+            <YAxis axisLine={false} tickLine={false} />
             <RechartsTooltip contentStyle={{ borderRadius: '1rem', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', direction: 'rtl' }} />
-            <Legend verticalAlign="top" height={40}/>
-            <Bar dataKey="stability" name="יציבות" fill="#6366f1" radius={[0, 6, 6, 0]} />
-            <Bar dataKey="speed" name="מהירות" fill="#cbd5e1" radius={[0, 6, 6, 0]} />
+            <Legend verticalAlign="top" height={36}/>
+            <Bar dataKey="stability" name="יציבות" fill="#6366f1" radius={[6, 6, 0, 0]} />
+            <Bar dataKey="speed" name="מהירות" fill="#cbd5e1" radius={[6, 6, 0, 0]} />
           </ReBarChart>
         </ResponsiveContainer>
       </div>
     </AcademicCard>
 
     <AcademicCard title="השוואה ויזואלית (Visual Comparison)" icon={Layout}>
-      <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <ScreenshotMock method="A" />
         <ScreenshotMock method="B" />
         <ScreenshotMock method="C" />
