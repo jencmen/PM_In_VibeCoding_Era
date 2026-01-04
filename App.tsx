@@ -41,10 +41,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Data ---
 const researchResults = [
-  { method: 'The Documenter', stability: 3.5, speed: 2, label: 'דרישות בלבד' },
-  { method: 'The Architect', stability: 4.8, speed: 4, label: 'PRD מלא' },
-  { method: 'The Vibe Coder', stability: 2.0, speed: 5, label: 'Vibe Only' },
-  { method: 'The Iterative', stability: 4.5, speed: 4.2, label: 'איטרטיבי' },
+  { method: 'The Documenter', stability: 3.5, speed: 2 },
+  { method: 'The Architect', stability: 4.8, speed: 4 },
+  { method: 'The Vibe Coder', stability: 2.0, speed: 5 },
+  { method: 'The Iterative', stability: 4.5, speed: 4.2 },
 ];
 
 const methodologyData = [
@@ -159,17 +159,17 @@ const AcademicCard = ({ children, title, icon: Icon }: { children?: React.ReactN
 
 const ScreenshotMock = ({ method }: { method: 'A' | 'B' | 'C' | 'D' }) => {
   const configs = {
-    A: { title: "תוצר A: The Documenter", color: "bg-slate-50", content: <div className="p-4 space-y-2 opacity-60"><div className="h-4 w-3/4 bg-slate-300 rounded"></div><div className="h-4 w-full bg-slate-200 rounded"></div></div> },
-    B: { title: "תוצר B: The Architect", color: "bg-blue-50", content: <div className="p-4 space-y-4"><div className="h-6 w-1/3 bg-blue-300 rounded"></div><div className="h-10 w-full bg-blue-600 rounded"></div></div> },
-    C: { title: "תוצר C: The Vibe Coder", color: "bg-purple-50", content: <div className="p-4 flex flex-col items-center justify-center h-full"><Sparkles className="text-purple-500 animate-pulse" size={32} /></div> },
-    D: { title: "תוצר D: The Iterative", color: "bg-indigo-50", content: <div className="p-4 space-y-3"><div className="h-24 bg-white border border-indigo-200 rounded-xl p-2 flex gap-2"><div className="w-1/4 h-full bg-slate-50 rounded"></div><div className="flex-1 space-y-2"><div className="h-3 w-3/4 bg-slate-200 rounded"></div><div className="h-12 w-full bg-indigo-50 rounded"></div></div></div></div> }
+    A: { title: "The Documenter (דרישות בלבד)", color: "bg-slate-50", content: <div className="p-4 space-y-2 opacity-60"><div className="h-4 w-3/4 bg-slate-300 rounded"></div><div className="h-4 w-full bg-slate-200 rounded"></div></div> },
+    B: { title: "The Architect (PRD מלא)", color: "bg-blue-50", content: <div className="p-4 space-y-4"><div className="h-6 w-1/3 bg-blue-300 rounded"></div><div className="h-10 w-full bg-blue-600 rounded"></div></div> },
+    C: { title: "The Vibe Coder (Vibe Only)", color: "bg-purple-50", content: <div className="p-4 flex flex-col items-center justify-center h-full"><Sparkles className="text-purple-500 animate-pulse" size={32} /></div> },
+    D: { title: "The Iterative (איטרטיבי)", color: "bg-indigo-50", content: <div className="p-4 space-y-3"><div className="h-24 bg-white border border-indigo-200 rounded-xl p-2 flex gap-2"><div className="w-1/4 h-full bg-slate-50 rounded"></div><div className="flex-1 space-y-2"><div className="h-3 w-3/4 bg-slate-200 rounded"></div><div className="h-12 w-full bg-indigo-50 rounded"></div></div></div></div> }
   };
   const config = configs[method];
   return (
-    <div className="flex flex-col space-y-2">
-      <div className="text-xs font-bold text-slate-500 mr-2">{config.title}</div>
-      <div className={`aspect-video rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow group ${config.color}`}>
-        <div className="h-4 bg-white border-b border-slate-100 flex items-center px-2 gap-1"><div className="w-1.5 h-1.5 rounded-full bg-slate-200"></div><div className="w-1.5 h-1.5 rounded-full bg-slate-200"></div></div>
+    <div className="flex flex-col space-y-2 mb-6">
+      <div className="text-sm font-black text-indigo-600 bg-indigo-50 w-fit px-3 py-1 rounded-full">{config.title}</div>
+      <div className={`aspect-video rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow group ${config.color}`}>
+        <div className="h-6 bg-white border-b border-slate-100 flex items-center px-3 gap-1.5"><div className="w-2 h-2 rounded-full bg-rose-300"></div><div className="w-2 h-2 rounded-full bg-yellow-300"></div><div className="w-2 h-2 rounded-full bg-green-300"></div></div>
         <div className="h-full relative">{config.content}</div>
       </div>
     </div>
@@ -180,7 +180,7 @@ const ScreenshotMock = ({ method }: { method: 'A' | 'B' | 'C' | 'D' }) => {
 
 const Abstract = () => (
   <div className="max-w-3xl">
-    <h1 className="text-5xl font-black text-slate-900 mb-6 leading-tight">שינוי פרדיגמת ה-Product Management בעידן ה-Vibe Coding</h1>
+    <h1 className="text-5xl font-black text-slate-900 mb-6 leading-tight italic">שינוי פרדיגמת ה-Product Management בעידן ה-Vibe Coding</h1>
     <div className="bg-indigo-900 text-white p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden mb-12">
       <Quote className="absolute top-6 right-6 opacity-20" size={64} />
       <h2 className="text-xl font-bold mb-4 border-b border-white/20 pb-2 uppercase tracking-widest text-indigo-300">תקציר (Abstract)</h2>
@@ -191,14 +191,30 @@ const Abstract = () => (
 
 const Introduction = () => (
   <AcademicCard title="1. מבוא (Introduction)" icon={BookOpen}>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
       <div className="prose prose-slate text-lg text-slate-600">
-        <p>מנהל המוצר כבר אינו רק מתרגם (Translator) – הוא הופך ל-Executor הראשון בשרשרת.</p>
-        <p className="mt-4 font-bold text-slate-900">ה-Vibe Coding מאפשר דילוג על צווארי בקבוק מסורתיים.</p>
+        <div className="mb-8 p-6 bg-indigo-50 border-r-4 border-indigo-500 rounded-l-2xl italic font-medium text-indigo-900 shadow-sm">
+          "בעידן שבו המחשבה הופכת לקוד באופן מיידי, הגבול היחיד הוא הבהירות של החזון שלך."
+        </div>
+        <p>מנהל המוצר כבר אינו רק מתרגם (Translator) – הוא הופך ל-Executor הראשון בשרשרת. ה-Vibe Coding מאפשר דילוג על צווארי בקבוק מסורתיים.</p>
+        
+        <div className="mt-8 space-y-6">
+          <h4 className="font-black text-slate-900 border-b pb-2">ההבדל בין Vibe ל-Engineering:</h4>
+          <div className="grid grid-cols-1 gap-4">
+            <div className="bg-white border border-slate-100 p-4 rounded-xl shadow-sm">
+              <span className="font-black text-indigo-600 block mb-1">Vibe Coding:</span>
+              <p className="text-sm">בנייה מבוססת <strong>כוונה (Intent)</strong>. התמקדות ב"מה" ובחוויה הכוללת, תוך השארת המימוש הטכני למודל ה-AI.</p>
+            </div>
+            <div className="bg-white border border-slate-100 p-4 rounded-xl shadow-sm">
+              <span className="font-black text-slate-900 block mb-1">Engineering:</span>
+              <p className="text-sm">בנייה מבוססת <strong>מבנה (Structure)</strong>. התמקדות ב"איך", ביציבות, במקרי קצה ובדיוק טכני מחמיר.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="bg-slate-50 p-6 rounded-2xl flex flex-col items-center justify-center border border-slate-100">
-        <Users size={48} className="text-slate-300 mb-4" />
-        <span className="text-center font-bold text-slate-500 italic">"שבירת חומת ה-Handoff"</span>
+      <div className="bg-slate-50 p-10 rounded-[2.5rem] flex flex-col items-center justify-center border border-slate-200 shadow-inner">
+        <Users size={64} className="text-indigo-200 mb-6" />
+        <span className="text-center font-black text-slate-400 italic text-xl">"שבירת חומת ה-Handoff"</span>
       </div>
     </div>
   </AcademicCard>
@@ -244,7 +260,7 @@ const Methodology = () => (
     <AcademicCard title="בחירת הכלים והארכיטקטורה (Tools & Architecture)" icon={Wrench}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         <div className="space-y-6">
-          <h4 className="text-xl font-black text-slate-800 mb-4">הנבחרת המנצחת (Selected Stack)</h4>
+          <h4 className="text-xl font-black text-slate-800 mb-4 italic">הנבחרת המנצחת (Selected Stack)</h4>
           <div className="grid grid-cols-1 gap-4">
             {selectedTools.map((tool, idx) => (
               <div key={idx} className={`p-6 rounded-2xl border border-slate-100 shadow-sm ${tool.bgColor}`}>
@@ -273,24 +289,25 @@ const Methodology = () => (
 );
 
 const Results = () => (
-  <div className="space-y-8">
+  <div className="space-y-12">
     <AcademicCard title="3. ממצאים (Results)" icon={BarChart}>
-      <div className="h-[400px] w-full mt-4">
+      <div className="h-[450px] w-full mt-4">
         <ResponsiveContainer width="100%" height="100%">
-          <ReBarChart data={researchResults}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} />
-            <XAxis dataKey="method" axisLine={false} tickLine={false} />
-            <YAxis axisLine={false} tickLine={false} />
+          <ReBarChart data={researchResults} layout="vertical" margin={{ left: 40, right: 40 }}>
+            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
+            <XAxis type="number" axisLine={false} tickLine={false} />
+            <YAxis dataKey="method" type="category" axisLine={false} tickLine={false} width={120} style={{ fontWeight: 700, fill: '#475569' }} />
             <RechartsTooltip contentStyle={{ borderRadius: '1rem', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', direction: 'rtl' }} />
-            <Legend verticalAlign="top" height={36}/>
-            <Bar dataKey="stability" name="יציבות" fill="#6366f1" radius={[6, 6, 0, 0]} />
-            <Bar dataKey="speed" name="מהירות" fill="#cbd5e1" radius={[6, 6, 0, 0]} />
+            <Legend verticalAlign="top" height={40}/>
+            <Bar dataKey="stability" name="יציבות" fill="#6366f1" radius={[0, 6, 6, 0]} />
+            <Bar dataKey="speed" name="מהירות" fill="#cbd5e1" radius={[0, 6, 6, 0]} />
           </ReBarChart>
         </ResponsiveContainer>
       </div>
     </AcademicCard>
+
     <AcademicCard title="השוואה ויזואלית (Visual Comparison)" icon={Layout}>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="flex flex-col gap-8 max-w-4xl mx-auto">
         <ScreenshotMock method="A" />
         <ScreenshotMock method="B" />
         <ScreenshotMock method="C" />
