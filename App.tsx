@@ -191,30 +191,68 @@ const Abstract = () => (
 
 const Introduction = () => (
   <AcademicCard title="1. מבוא (Introduction)" icon={BookOpen}>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-      <div className="prose prose-slate text-lg text-slate-600">
-        <div className="mb-8 p-6 bg-indigo-50 border-r-4 border-indigo-500 rounded-l-2xl italic font-medium text-indigo-900 shadow-sm">
-          "בעידן שבו המחשבה הופכת לקוד באופן מיידי, הגבול היחיד הוא הבהירות של החזון שלך."
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="prose prose-slate text-lg text-slate-600 space-y-8">
+        {/* Inspirational Quote */}
+        <div className="bg-indigo-50 p-8 border-r-8 border-indigo-600 rounded-l-3xl shadow-sm italic relative">
+          <Quote className="absolute -top-3 -right-3 text-indigo-200" size={32} />
+          <p className="text-indigo-900 font-bold text-xl mb-2">"The best way to predict the future is to create it."</p>
+          <p className="text-indigo-600 text-sm font-black">— Peter Drucker</p>
         </div>
-        <p>מנהל המוצר כבר אינו רק מתרגם (Translator) – הוא הופך ל-Executor הראשון בשרשרת. ה-Vibe Coding מאפשר דילוג על צווארי בקבוק מסורתיים.</p>
+
+        <p>
+          בעידן ה-AI, מנהל המוצר הופך ממי שרק <strong>מתאר</strong> את המוצר למי שבאופן אקטיבי <strong>בורא</strong> אותו. זהו מעבר דרמטי מניהול תהליכים לניהול תוצרים.
+        </p>
         
-        <div className="mt-8 space-y-6">
-          <h4 className="font-black text-slate-900 border-b pb-2">ההבדל בין Vibe ל-Engineering:</h4>
+        {/* Breaking the Handoff Wall Explanation */}
+        <div className="bg-slate-900 text-white p-6 rounded-2xl shadow-lg border border-slate-800">
+          <h4 className="flex items-center gap-2 text-indigo-400 font-black mb-3">
+            <Zap size={20} /> שבירת חומת ה-Handoff
+          </h4>
+          <p className="text-sm text-slate-300 leading-relaxed">
+            המושג מתאר את ביטול ההפרדה המסורתית בין 'אפיון' ל'פיתוח'. בעזרת Vibe Coding, מנהל המוצר מדלג על שלבי המתנה מתישים ומייצר MVP עובד בעצמו, מה שמאפשר איטרציות במהירות המחשבה.
+          </p>
+        </div>
+
+        <div className="space-y-6">
+          <h4 className="font-black text-slate-900 border-b pb-2 flex items-center gap-2">
+            <Activity size={20} className="text-indigo-600" /> Vibe vs Engineering
+          </h4>
           <div className="grid grid-cols-1 gap-4">
-            <div className="bg-white border border-slate-100 p-4 rounded-xl shadow-sm">
+            <div className="bg-white border border-slate-100 p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
               <span className="font-black text-indigo-600 block mb-1">Vibe Coding:</span>
-              <p className="text-sm">בנייה מבוססת <strong>כוונה (Intent)</strong>. התמקדות ב"מה" ובחוויה הכוללת, תוך השארת המימוש הטכני למודל ה-AI.</p>
+              <p className="text-sm leading-relaxed">בנייה מבוססת <strong>כוונה (Intent)</strong>. המיקוד הוא ב"מה" ובחוויה. ה-AI לוקח על עצמו את ה"איך" הטכני.</p>
             </div>
-            <div className="bg-white border border-slate-100 p-4 rounded-xl shadow-sm">
+            <div className="bg-white border border-slate-100 p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
               <span className="font-black text-slate-900 block mb-1">Engineering:</span>
-              <p className="text-sm">בנייה מבוססת <strong>מבנה (Structure)</strong>. התמקדות ב"איך", ביציבות, במקרי קצה ובדיוק טכני מחמיר.</p>
+              <p className="text-sm leading-relaxed">בנייה מבוססת <strong>מבנה (Structure)</strong>. המיקוד הוא ב"איך" – יציבות, סקיילביליות, ומקרי קצה מורכבים.</p>
             </div>
           </div>
         </div>
       </div>
-      <div className="bg-slate-50 p-10 rounded-[2.5rem] flex flex-col items-center justify-center border border-slate-200 shadow-inner">
-        <Users size={64} className="text-indigo-200 mb-6" />
-        <span className="text-center font-black text-slate-400 italic text-xl">"שבירת חומת ה-Handoff"</span>
+      
+      <div className="flex flex-col gap-6">
+        <div className="bg-slate-50 p-10 rounded-[3rem] flex flex-col items-center justify-center border border-slate-200 shadow-inner flex-1 min-h-[300px] relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-100/50 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000"></div>
+          <Users size={80} className="text-indigo-100 mb-8" />
+          <span className="text-center font-black text-slate-500 italic text-2xl max-w-xs leading-tight">
+            "מעבר מצופה מהצד לשותף אקטיבי ביצירה"
+          </span>
+          <div className="mt-8 flex gap-4">
+            <div className="w-12 h-1 bg-indigo-600 rounded-full"></div>
+            <div className="w-8 h-1 bg-slate-200 rounded-full"></div>
+            <div className="w-4 h-1 bg-slate-100 rounded-full"></div>
+          </div>
+        </div>
+        
+        <div className="bg-indigo-600 p-8 rounded-[2.5rem] text-white shadow-xl shadow-indigo-100">
+           <h5 className="font-black mb-2 flex items-center gap-2">
+             <Lightbulb size={20} /> התובנה המרכזית:
+           </h5>
+           <p className="text-indigo-100 text-sm leading-relaxed">
+             ה-Vibe Coding אינו מחליף את ההנדסה, הוא מחליף את הניחושים. אנחנו בונים כדי ללמוד, ולא לומדים כדי לבנות.
+           </p>
+        </div>
       </div>
     </div>
   </AcademicCard>
