@@ -41,10 +41,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Data ---
 const researchResults = [
-  { method: 'A', stability: 3.5, speed: 2, label: 'דרישות בלבד' },
-  { method: 'B', stability: 4.8, speed: 4, label: 'PRD מלא' },
-  { method: 'C', stability: 2.0, speed: 5, label: 'Vibe Only' },
-  { method: 'D', stability: 4.5, speed: 4.2, label: 'איטרטיבי' },
+  { method: 'The Documenter', stability: 3.5, speed: 2, label: 'דרישות בלבד' },
+  { method: 'The Architect', stability: 4.8, speed: 4, label: 'PRD מלא' },
+  { method: 'The Vibe Coder', stability: 2.0, speed: 5, label: 'Vibe Only' },
+  { method: 'The Iterative', stability: 4.5, speed: 4.2, label: 'איטרטיבי' },
 ];
 
 const methodologyData = [
@@ -159,10 +159,10 @@ const AcademicCard = ({ children, title, icon: Icon }: { children?: React.ReactN
 
 const ScreenshotMock = ({ method }: { method: 'A' | 'B' | 'C' | 'D' }) => {
   const configs = {
-    A: { title: "תוצר A", color: "bg-slate-50", content: <div className="p-4 space-y-2 opacity-60"><div className="h-4 w-3/4 bg-slate-300 rounded"></div><div className="h-4 w-full bg-slate-200 rounded"></div></div> },
-    B: { title: "תוצר B", color: "bg-blue-50", content: <div className="p-4 space-y-4"><div className="h-6 w-1/3 bg-blue-300 rounded"></div><div className="h-10 w-full bg-blue-600 rounded"></div></div> },
-    C: { title: "תוצר C", color: "bg-purple-50", content: <div className="p-4 flex flex-col items-center justify-center h-full"><Sparkles className="text-purple-500 animate-pulse" size={32} /></div> },
-    D: { title: "תוצר D", color: "bg-indigo-50", content: <div className="p-4 space-y-3"><div className="h-24 bg-white border border-indigo-200 rounded-xl p-2 flex gap-2"><div className="w-1/4 h-full bg-slate-50 rounded"></div><div className="flex-1 space-y-2"><div className="h-3 w-3/4 bg-slate-200 rounded"></div><div className="h-12 w-full bg-indigo-50 rounded"></div></div></div></div> }
+    A: { title: "תוצר A: The Documenter", color: "bg-slate-50", content: <div className="p-4 space-y-2 opacity-60"><div className="h-4 w-3/4 bg-slate-300 rounded"></div><div className="h-4 w-full bg-slate-200 rounded"></div></div> },
+    B: { title: "תוצר B: The Architect", color: "bg-blue-50", content: <div className="p-4 space-y-4"><div className="h-6 w-1/3 bg-blue-300 rounded"></div><div className="h-10 w-full bg-blue-600 rounded"></div></div> },
+    C: { title: "תוצר C: The Vibe Coder", color: "bg-purple-50", content: <div className="p-4 flex flex-col items-center justify-center h-full"><Sparkles className="text-purple-500 animate-pulse" size={32} /></div> },
+    D: { title: "תוצר D: The Iterative", color: "bg-indigo-50", content: <div className="p-4 space-y-3"><div className="h-24 bg-white border border-indigo-200 rounded-xl p-2 flex gap-2"><div className="w-1/4 h-full bg-slate-50 rounded"></div><div className="flex-1 space-y-2"><div className="h-3 w-3/4 bg-slate-200 rounded"></div><div className="h-12 w-full bg-indigo-50 rounded"></div></div></div></div> }
   };
   const config = configs[method];
   return (
@@ -241,7 +241,7 @@ const Methodology = () => (
       </div>
     </AcademicCard>
 
-    <AcademicCard title="2.1 בחירת הכלים והארכיטקטורה (Tools & Architecture)" icon={Wrench}>
+    <AcademicCard title="בחירת הכלים והארכיטקטורה (Tools & Architecture)" icon={Wrench}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         <div className="space-y-6">
           <h4 className="text-xl font-black text-slate-800 mb-4">הנבחרת המנצחת (Selected Stack)</h4>
@@ -289,7 +289,7 @@ const Results = () => (
         </ResponsiveContainer>
       </div>
     </AcademicCard>
-    <AcademicCard title="3.1 השוואה ויזואלית (Visual Comparison)" icon={Layout}>
+    <AcademicCard title="השוואה ויזואלית (Visual Comparison)" icon={Layout}>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <ScreenshotMock method="A" />
         <ScreenshotMock method="B" />
@@ -305,7 +305,7 @@ const Discussion = () => (
     <AcademicCard title="4. דיון: תובנות מהשטח וחוויה אישית (Discussion)" icon={Lightbulb}>
       <div className="prose prose-indigo max-w-none text-slate-600 text-lg space-y-12">
         
-        {/* Sub-chapter: Personal Experience */}
+        {/* Experience Section */}
         <section className="bg-indigo-50/50 p-10 rounded-[2.5rem] border border-indigo-100 relative overflow-hidden shadow-inner">
           <div className="absolute top-4 left-4 opacity-10">
             <User size={120} className="text-indigo-600" />
@@ -315,7 +315,7 @@ const Discussion = () => (
               <div className="bg-indigo-600 p-2.5 rounded-xl text-white shadow-lg">
                 <User size={24} />
               </div>
-              תת-פרק: חוויה אישית - מהספקן למאמין
+              חוויה אישית - מהספקן למאמין
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
@@ -427,7 +427,8 @@ const Discussion = () => (
             <h4 className="text-white font-black text-2xl italic">The "Hybrid PM" Blueprint</h4>
           </div>
           <p className="text-2xl font-light leading-relaxed mb-8">
-            מנהל המוצר החדש הוא היברידי: יודע <span className="text-indigo-400 font-bold">לחלום ב-Vibe</span> אבל יודע <span className="text-rose-400 font-bold">לבקר ב-Engineering</span>. הצלחה נמדדת ביכולת לגשר על הפער בין המופע הראשון המדהים למציאות המערכתית.
+            מנהל המוצר החדש הוא היברידי: יודע <span className="text-indigo-400 font-bold">לחלום ב-Vibe</span> אבל יודע <span className="text-rose-400 font-bold">לבקר ב-Engineering</span>. 
+            הדרך לגשר על הפער בין המופע הראשון המדהים למציאות המערכתית היא בעזרת <strong>PRD שלם, לאו דווקא מדויק</strong> – כזה שרואה את התמונה המלאה אך לא יורד לפרטים הקטנים ביותר.
           </p>
         </div>
       </div>
@@ -454,11 +455,6 @@ const Conclusion = () => (
       <p>המלצת המחקר: אל תחליפו את הצוות, אלא <strong>הקדימו</strong> אותו.</p>
       <div className="p-8 border-r-8 border-indigo-500 bg-indigo-50 italic rounded-2xl shadow-inner">
         "השתמשו ב-Vibe Coding כדי להביא גרסה עובדת ומבוססת פידבק, ותנו לצוות הפיתוח המיומן להפוך אותה למוצר ממשלתי אמין ומאובטח."
-      </div>
-      <div className="mt-12 flex flex-wrap gap-4">
-        <button className="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-2 hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-100">
-          <FileText size={20} /> הורד את המאמר המלא (PDF)
-        </button>
       </div>
     </div>
   </AcademicCard>
